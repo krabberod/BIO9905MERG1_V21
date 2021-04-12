@@ -1,9 +1,17 @@
+# Folders
+
+dada2_main/fastq_filtered/
+#*.fastq
+
+
 # History files
 .Rhistory
 .Rapp.history
 
 # Session Data files
 .RData
+*.RData
+dada2.RData
 
 # User-specific files
 .Ruserdata
@@ -19,6 +27,7 @@
 
 # RStudio files
 .Rproj.user/
+*.Rproj
 
 # produced vignettes
 vignettes/*.html
