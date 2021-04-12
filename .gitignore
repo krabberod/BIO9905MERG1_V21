@@ -1,6 +1,7 @@
 # Folders
 
 dada2_main/fastq_filtered/
+dada2_main/fastq_filtered/qual_pdf/
 #*.fastq
 
 
