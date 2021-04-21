@@ -3,21 +3,21 @@
 
 # UNDER CONSTRUCTION
 
-### Course content
+## Course content
 For mapping and exploring communities of both micro- and macroorganisms, high throughput sequencing (HTS) of environmental DNA has become a powerful approach. One can either analyze the total DNA content to obtain knowledge about which genes are present (DNA metagenomics) or sequence a selected PCR amplified marker (DNA metabarcoding) to obtain information about the taxonomic composition. We will focus on the latter approach in this course. The students will be introduced to important analytical bioinformatics approaches from processing of raw sequence data to establishment of the OTU/sample matrix and retrieval of taxonomic identity of the sequences.
 
 Important themes will be (1) filtering and quality assessment of high throughput sequence data, (2) error correction and/or clustering of high throughput sequence data, and (3) taxonomic annotation of high throughput sequence data. We will also touch upon some further downstream analyses, including network analyses and evolutionary placement of HTS onto backbone phylogenies. Applications of a wide suite of tools will be presented, including VSEARCH and DADA2.
 
 The course will be a blend of presentations, guest lectures, discussion and a few hands on sessions. All hands-on secession will be run in R on your local laptop/computer. Hence, all participants should have R and selected R packages installed – see information below. (Due to the covid situation, we do not have the capacity to run analyses on servers – as we usually do).
 
-### Schedule
+## Schedule
 
 The course will run 3-7 May 9am-4(5)pm in zoom. For a detailed overview of the program, see below. The zoom link will be provided.
 
-### Report
+## Report
 Those of you that attend the course through the research schools or UiO and want to obtain ECT credits, will have to hand in a short report a few weeks after the course. You should here write about how you would carry out a fictional environmental sequencing study. We will provide more information about this.
 
-### Teachers
+## Teachers
 Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Torbjørn Rognes and Håvard Kauserud (organizer), but other experts will provide guest lectures (see table).
 
 
@@ -34,7 +34,7 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 |              | 12:45-14:00  | Introduction to Linux and R/Rstudio                     | Ramiro Logares/Anders K. Krabberød   |
 |              | 14:00-15:00  | Introduction to cutadapt and sequence cleaning          | Ramiro Logares                       |
 |              | 15:00-16:00  | Introduction to VSEARCH (and SWARM)                     | Torbjørn Rognes                      |
-|              | 16:00-17:00  | Help with [setup of required packages for DADA2](Setup)          | Anders Krabberød                     |
+|              | 16:00-17:00  | [Help with setup of required packages for DADA2](Setup)          | Anders Krabberød                     |
 | **Tuesday**  | 09:00-10:00  | [Introduction to DADA2](Dada2_Pipeline)                 | Anders Krabberød                     |
 |              | 10:00-11:00  | [Continuation DADA2](Dada2_Pipeline)                     | Anders Krabberød                     |
 |              | 11:00-12:00  | [Continuation DADA2](Dada2_Pipeline)                     | Anders Krabberød                     |
