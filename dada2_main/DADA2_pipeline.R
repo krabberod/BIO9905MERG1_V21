@@ -48,7 +48,7 @@ database_dir <- "databases/"  # folder with the PR2 database https://github.com/
 
 filtered_dir <- "fastq_filtered/"  # fastq filtered
 qual_dir <- "qual_pdf/"  # qual pdf
-dada2_dir <- "dada2/"  # dada2 results
+dada2_dir <- "dada2_out/"  # dada2 results
 blast_dir <- "blast/"  # blast2 results
 
 
@@ -67,7 +67,11 @@ primer_length_fwd <- str_length(primer_set_fwd[1])
 primer_length_rev <- str_length(primer_set_rev[1])
 
 #### PR2 taxonomic levels
-PR2_tax_levels <- c("Kingdom", "Supergroup", "Division", "Class", "Order", "Family",
+# This step depends on the kind of taxonomic assignment that will be used later 
+# The PR2 database is a curated quality database for Proitst, with 8 taxonomic ranks
+
+PR2_tax_levels <- c("Kingdom", "Supergroup", "Division", "Class", 
+                    "Order", "Family",
                     "Genus", "Species")
 
 #### Examine fastq files
@@ -82,6 +86,9 @@ sample.names <- str_split(basename(fns_R1), pattern = "_", simplify = TRUE)
 sample.names <- sample.names[, 2] 
 
 #### Make a dataframe with the number of sequences in each file ####
+# NB! Any sequence of length 0 will cause the loop to crash
+# These should be removed in advance
+
 df <- data.frame()
 
 for (i in 1:length(fns_R1)) {
@@ -131,12 +138,13 @@ for (i in 1:length(fns)) {
 
 
 
-#### 5.6.1
+#### 
+# Prepare the outputnames for filteres reads: 
 filt_R1 <- str_c(filtered_dir, sample.names, "_R1_filt.fastq")
 filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 
 
-#### 5.6.XXX FILTER WITH CUTADAPT (not executed)
+####FILTER WITH CUTADAPT (not executed inside R)
 # Cutadapt is the preferred way of filtering sequences, because it will trim
 # primers allowing some mismatches and ambiguities. It is not implemented
 # in R at the moment, however so we filter using the length of the primer
@@ -150,19 +158,22 @@ filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 # cutadpat(fq1, output.dir, adpat.seq="insert primer sequence here", m=1, mc.cores=1, run.cmd=TRUE)
 
 
-#### 5.6.3 FILTER BY LENGTH OF PRIMER
+#### SIMPLE FILTER BY LENGTH OF PRIMER
 ptm <- proc.time()
 out <- filterAndTrim(fns_R1, filt_R1, fns_R2, filt_R2, truncLen = c(250, 200),
                      trimLeft = c(primer_length_fwd, primer_length_rev), maxN = 0,
                      maxEE = c(2, 2), truncQ = 2, rm.phix = TRUE,
                      compress = FALSE, multithread = FALSE)
 proc.time() - ptm
+
+# NOTE OLD DATASET
 #user  system elapsed 
 #295.232  36.816 372.188 
 
+#user  system elapsed 
+#99.445  11.819 151.329
 
-
-#### 5.7 DADA2 ####
+#### DADA2 ####
 # If your setup allows running multiple threads set multithread = TRUE
 # Windows: multithread = FALSE
 
@@ -170,16 +181,29 @@ ptm <- proc.time()
 err_R1 <- learnErrors(filt_R1, multithread = TRUE)
 plotErrors(err_R1, nominalQ = TRUE)
 learn_error_time_multi<- proc.time() - ptm
+
+# On a MacbookPro mid 2015
+# user   system  elapsed 
+# 1270.760   36.343  752.838 
+
 ptm <- proc.time()
-err_R2 <- learnErrors(filt_R2, multithread = FALSE)
+err_R2 <- learnErrors(filt_R2, multithread = T)
 plotErrors(err_R2, nominalQ = TRUE)
 learn_error_time_nomulti<- proc.time() - ptm
+
+learn_error_time_multi
+learn_error_time_nomulti
+
 
 #### 5.7.2 Dereplicate the reads ####
 ptm <- proc.time()
 derep_R1 <- derepFastq(filt_R1, verbose = FALSE)
 derep_R2 <- derepFastq(filt_R2, verbose = FALSE)
 proc.time() - ptm
+
+# MacBook
+#user  system elapsed 
+#15.739   3.058  19.755 
 # Name the derep-class objects by the sample names
 names(derep_R1) <- sample.names
 names(derep_R2) <- sample.names
@@ -191,19 +215,25 @@ ptm <- proc.time()
 dada_R1 <- dada(derep_R1, err = err_R1, multithread = TRUE, pool = FALSE)
 dada_mulit<-proc.time() - ptm
 
-ptm <- proc.time()
-dada_R2 <- dada(derep_R2, err = err_R2, multithread = FALSE, pool = FALSE)
-dada_nomulit<-proc.time() - ptm
+# Mac
+# user  system elapsed 
+# 226.673   2.545  83.259 
+
+#ptm <- proc.time()
+
+dada_R2 <- dada(derep_R2, err = err_R2, multithread = T, pool = FALSE)
+
+#dada_nomulit<-proc.time() - ptm
 
 # Viewing the first entry in each of the dada objects
 dada_R1[[1]]
 dada_R2[[1]]
 
-#### 5.7.4 Merge Sequences
+#### Merge Sequences
 mergers <- mergePairs(dada_R1, derep_R1, dada_R2, derep_R2, verbose = TRUE)
 head(mergers[[1]])
 
-#### 5.7.5 ####
+####   ####
 seqtab <- makeSequenceTable(mergers)
 dim(seqtab)
 # Make a transposed version of seqtab to make it similar to data in mothur
@@ -212,7 +242,7 @@ table(nchar(getSequences(seqtab)))
 plot(table(nchar(getSequences(seqtab)))) #simple plot of length distribution
 
 
-#### 5.7.6 Remove chimeras ####
+#### Remove chimeras ####
 seqtab.nochim <- removeBimeraDenovo(seqtab, method = "consensus", multithread = FALSE,
                                     verbose = TRUE)
 
@@ -222,7 +252,7 @@ paste0("total number of sequences : ", sum(seqtab.nochim))
 
 # What are chimeras, and why do we remove them? How is it done in Dada2?
 
-#### 5.7.7 Track number of reads at each step
+#### Track number of reads at each step
 getN <- function(x) sum(getUniques(x)) # example of a function in R
 
 track <- cbind(out, sapply(dada_R1, getN), sapply(mergers, getN), rowSums(seqtab),
@@ -234,7 +264,7 @@ rownames(track) <- sample.names
 #View the output
 track
 
-#### 5.7.8 Transforming and saving the ASVs sequences
+#### Transforming and saving the ASVs sequences
 
 seqtab.nochim_trans <- as.data.frame(t(seqtab.nochim)) %>% rownames_to_column(var = "sequence") %>%
   rowid_to_column(var = "OTUNumber") %>% mutate(OTUNumber = sprintf("otu%04d",
@@ -247,32 +277,26 @@ seq_out
 
 Biostrings::writeXStringSet(seq_out, str_c(dada2_dir, "ASV_no_taxo.fasta"),
                             compress = FALSE, width = 20000)
-#### 5.7.9 Assinging taxonomy
+#### Assinging taxonomy
 # The PR2 database can be found here:
-#
-# https://github.com/vaulot/metabarcodes_tutorials/tree/master/databases
-#
+# https://pr2-database.org/
+# The PR2 database has preformatted files suitable for dada2  for both 18S and 16S
+# 
 
-
-pr2_file <- paste0(database_dir, "pr2_version_4.72_dada2.fasta.gz")
+pr2_file <- paste0("databases/pr2_version_4.13.0_18S_dada2.fasta.gz")
 
 # OBS! The next step takes a long time. ~45 min on a medium fast PC...
 # So in case we are running late skip this next command. If we have time
 # start the process (i.e. remove hashtags), and have some coffee.
 
-
 taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
                        minBoot = 0, outputBootstraps = TRUE, verbose = TRUE)
 
-
-#saveRDS(taxa, str_c(dada2_dir, "OsloFjord.taxa.rds"))
-
-
+#saveRDS(taxa, str_c(dada2_dir, "aada2.taxa.rds"))
 
 # I have prepared a taxonomy file that I can put on github, if necessary.
 
-#taxa <- readRDS(str_c(dada2_dir, "OsloFjord.taxa.rds"))
-
+#taxa <- readRDS(str_c(dada2_dir, "taxa.rds"))
 # Seqtab.nochim_trans <- read.RDS(str_c("seqtab.nochim_trans.rds"))
 # Export information in tab or comma separated files
 write_tsv(as_tibble(taxa$tax), path = str_c(dada2_dir, "taxa.txt"))
