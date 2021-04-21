@@ -35,7 +35,7 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 |              | 14:00-15:00  | Introduction to cutadapt and sequence cleaning          | Ramiro Logares                       |
 |              | 15:00-16:00  | Introduction to VSEARCH (and SWARM)                     | Torbjørn Rognes                      |
 |              | 16:00-17:00  | Help with setup of required packages for DADA2          | Anders Krabberød                     |
-| **Tuesday**  | 09:00-10:00  | Introduction to  DADA2                                  | Anders Krabberød                     |
+| **Tuesday**  | 09:00-10:00  | [Introduction to DADA2](Dada2_Pipeline)                                  | Anders Krabberød                     |
 |              | 10:00-11:00  | Continuation DADA2                                      | Anders Krabberød                     |
 |              | 11:00-12:00  | Continuation DADA2                                      | Anders Krabberød                     |
 |              | 12:00-12:45  | _Lunch break_                                           |                                      |
@@ -68,7 +68,7 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 
 
 # Suggested reading (reviews)
-You can find the PDFs [here:](Suggested_reading/Readme.md)
+You can find the PDFs [here:](Suggested_reading/)
 - Zinger et al. 2019. DNA metabarcoding—Need for robust experimental designs to draw sound ecological conclusions. Molecular Ecology, 28, 1857-1862
 - 	Deiner et al. 2017. Environmental DNA metabarcoding: Transforming how we survey animal and plant communities. Molecular Ecology, 26, 5872-5895.
 - 	Bohmann et al. 2014. Environmental DNA for wildlife biology and biodiversity monitoring. TREE, 29.
