@@ -1,13 +1,9 @@
 # Bioinformatics for Environmental Sequencing (DNA metabarcoding)
 #### BIO9905MERG1 Spring 2021
 
-
 # UNDER CONSTRUCTION
 
-
-
 ### Course content
-
 For mapping and exploring communities of both micro- and macroorganisms, high throughput sequencing (HTS) of environmental DNA has become a powerful approach. One can either analyze the total DNA content to obtain knowledge about which genes are present (DNA metagenomics) or sequence a selected PCR amplified marker (DNA metabarcoding) to obtain information about the taxonomic composition. We will focus on the latter approach in this course. The students will be introduced to important analytical bioinformatics approaches from processing of raw sequence data to establishment of the OTU/sample matrix and retrieval of taxonomic identity of the sequences.
 
 Important themes will be (1) filtering and quality assessment of high throughput sequence data, (2) error correction and/or clustering of high throughput sequence data, and (3) taxonomic annotation of high throughput sequence data. We will also touch upon some further downstream analyses, including network analyses and evolutionary placement of HTS onto backbone phylogenies. Applications of a wide suite of tools will be presented, including VSEARCH and DADA2.
@@ -19,16 +15,14 @@ The course will be a blend of presentations, guest lectures, discussion and a fe
 The course will run 3-7 May 9am-4(5)pm in zoom. For a detailed overview of the program, see below. The zoom link will be provided.
 
 ### Report
-
 Those of you that attend the course through the research schools or UiO and want to obtain ECT credits, will have to hand in a short report a few weeks after the course. You should here write about how you would carry out a fictional environmental sequencing study. We will provide more information about this.
 
 ### Teachers
-
 Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Torbjørn Rognes and Håvard Kauserud (organizer), but other experts will provide guest lectures (see table).
 
 
 
-# Program
+## Program
 
 
 | Day          | Time (start) | Topic                                                   | Responsible                          |
@@ -70,10 +64,11 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 |              | 14:00-15:00  | Discussion groups                                       | Håvard Kauserud                      |
 |              | 15:00-16:00  | DNA-metabarcoding - where are we going?                 | Pierre Taberlet                      |
 
+---
 
 
 # Suggested reading (reviews)
-
+You can find the PDFs [here:](Suggested\ reading/)
 - Zinger et al. 2019. DNA metabarcoding—Need for robust experimental designs to draw sound ecological conclusions. Molecular Ecology, 28, 1857-1862
 - 	Deiner et al. 2017. Environmental DNA metabarcoding: Transforming how we survey animal and plant communities. Molecular Ecology, 26, 5872-5895.
 - 	Bohmann et al. 2014. Environmental DNA for wildlife biology and biodiversity monitoring. TREE, 29.
