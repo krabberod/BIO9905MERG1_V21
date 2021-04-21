@@ -27,17 +27,17 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 
 | Day          | Time (start) | Topic                                                   | Responsible                          |
 | ------------ | ------------ | ------------------------------------------------------- | ------------------------------------ |
-| **Monday**   | 09:00-10:00  | Introduction to DNA metabarcoding                       | Håvard Kauserud                      |
+| **Monday**   | 09:00 - 10:00  | Introduction to DNA metabarcoding                       | Håvard Kauserud                      |
 |              | 10:00-11:00  | Introduction to sequencing techniques                   | Robert Lyle                          |
 |              | 11:00-12:00  | Discussion groups: Get to know each other               | Håvard Kauserud                      |
 |              | 12:00-12:45  | _Lunch break_                                           |                                      |
 |              | 12:45-14:00  | Introduction to Linux and R/Rstudio                     | Ramiro Logares/Anders K. Krabberød   |
 |              | 14:00-15:00  | Introduction to cutadapt and sequence cleaning          | Ramiro Logares                       |
 |              | 15:00-16:00  | Introduction to VSEARCH (and SWARM)                     | Torbjørn Rognes                      |
-|              | 16:00-17:00  | [Help with setup of required packages for DADA2](Setup)          | Anders Krabberød                     |
+|              | 16:00-17:00  | [Help with setup of required packages for DADA2](Setup) | Anders Krabberød                     |
 | **Tuesday**  | 09:00-10:00  | [Introduction to DADA2](Dada2_Pipeline)                 | Anders Krabberød                     |
-|              | 10:00-11:00  | [Continuation DADA2](Dada2_Pipeline)                     | Anders Krabberød                     |
-|              | 11:00-12:00  | [Continuation DADA2](Dada2_Pipeline)                     | Anders Krabberød                     |
+|              | 10:00-11:00  | [Continuation DADA2](Dada2_Pipeline)                    | Anders Krabberød                     |
+|              | 11:00-12:00  | [Continuation DADA2](Dada2_Pipeline)                    | Anders Krabberød                     |
 |              | 12:00-12:45  | _Lunch break_                                           |                                      |
 |              | 12:45-14:00  | Contamination issues during DNA metabarcoding           | Kristine Bohmann                     |
 |              | 14:00-15:00  | Continuation DADA2](Dada2_Pipeline) (+ VSEARCH?)        | Ramiro Logares / Anders K. Krabberød |
@@ -56,8 +56,8 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 |              | 12:45-14:00  | Long-read metabarcoding                                 | Mahwash Jamy                         |
 |              | 14:00-15:00  | Introduction to metacoder                               | Ella Thoen                           |
 |              | 15:00-16:00  | Case study                                              | Sundy Maurice                        |
-| **Friday**   | 09:00-10:00  | [Network analyses of DNA-metarcoding data](Networks)                | Anders K. Krabberød                  |
-|              | 10:00-11:00  | [Network analyses of DNA-metarcoding data](Networks)                | Anders K. Krabberød                  |
+| **Friday**   | 09:00-10:00  | [Network analyses of DNA-metarcoding data](Networks)    | Anders K. Krabberød                  |
+|              | 10:00-11:00  | [Network analyses of DNA-metarcoding data](Networks)    | Anders K. Krabberød                  |
 |              | 11:00-12:00  | Methods to retrieve intra-species diversity information | Owen S. Wangensteen Fuentes          |
 |              | 12:00-12:45  | _Lunch break_                                           |                                      |
 |              | 12:45-14:00  | Flexible time                                           |                                      |
