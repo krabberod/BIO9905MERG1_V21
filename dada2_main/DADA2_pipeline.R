@@ -32,6 +32,7 @@ library("readxl")
 library("readr")
 library("stringr")
 library("kableExtra") 
+library("tidyverse")
 #library("pr2database")
 
 #### Prepare Directories ####
@@ -264,10 +265,10 @@ rownames(track) <- sample.names
 #View the output
 track
 
-#### Transforming and saving the ASVs sequences
+#### Transforming and saving the OTU sequences
 
 seqtab.nochim_trans <- as.data.frame(t(seqtab.nochim)) %>% rownames_to_column(var = "sequence") %>%
-  rowid_to_column(var = "OTUNumber") %>% mutate(OTUNumber = sprintf("otu%04d",
+  rowid_to_column(var = "OTUNumber") %>% mutate(OTUNumber = sprintf("OTU_%05d",
                                                                     OTUNumber)) %>% mutate(sequence = str_replace_all(sequence, "(-|\\.)", ""))
 
 df <- seqtab.nochim_trans
@@ -275,7 +276,7 @@ seq_out <- Biostrings::DNAStringSet(df$sequence)
 names(seq_out) <- df$OTUNumber
 seq_out
 
-Biostrings::writeXStringSet(seq_out, str_c(dada2_dir, "ASV_no_taxo.fasta"),
+Biostrings::writeXStringSet(seq_out, str_c(dada2_dir, "OTU_no_taxonomy.fasta"),
                             compress = FALSE, width = 20000)
 #### Assinging taxonomy
 # The PR2 database can be found here:
@@ -289,48 +290,60 @@ pr2_file <- paste0("databases/pr2_version_4.13.0_18S_dada2.fasta.gz")
 # So in case we are running late skip this next command. If we have time
 # start the process (i.e. remove hashtags), and have some coffee.
 
-taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
-                       minBoot = 0, outputBootstraps = TRUE, verbose = TRUE)
+ptm <- proc.time()
+#taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
+#                       minBoot = 0, outputBootstraps = TRUE, verbose = TRUE)
+taxo_assign<-proc.time() - ptm
 
-#saveRDS(taxa, str_c(dada2_dir, "aada2.taxa.rds"))
+#user   system  elapsed 
+#6612.075  504.603 2576.869 
+
+
+#saveRDS(taxa, str_c(dada2_dir, "dada2.taxa.rds"))
 
 # I have prepared a taxonomy file that I can put on github, if necessary.
 
-#taxa <- readRDS(str_c(dada2_dir, "taxa.rds"))
+# taxa <- readRDS(str_c(dada2_dir, "taxa.rds"))
 # Seqtab.nochim_trans <- read.RDS(str_c("seqtab.nochim_trans.rds"))
+
 # Export information in tab or comma separated files
-write_tsv(as_tibble(taxa$tax), path = str_c(dada2_dir, "taxa.txt"))
-write.csv(taxa$tax, file = str_c(dada2_dir, "taxa.txt"))
-write_tsv(as_tibble(taxa$boot), path = str_c(dada2_dir, "taxa_boot.txt"))
-write_tsv(as_tibble(seqtab.nochim), path = str_c(dada2_dir, "seqtab.txt"))
+write_tsv(as_tibble(taxa$tax), file = str_c(dada2_dir, "taxa.txt"))
+#write.csv(taxa$tax, file = str_c(dada2_dir, "taxa.txt"))
+
+write_tsv(as_tibble(taxa$boot), file = str_c(dada2_dir, "taxa_boot.txt"))
+write_tsv(as_tibble(seqtab.nochim), file = str_c(dada2_dir, "seqtab.txt"))
 
 
-#### 5.7.11 Appending taxonomy and boot to the sequence table ####
+#### Appending taxonomy and boot to the sequence table ####
 taxa_tax <- as.data.frame(taxa$tax)
 taxa_boot <- as.data.frame(taxa$boot) %>% rename_all(funs(str_c(., "_boot")))
 seqtab.nochim_trans <- taxa_tax %>% bind_cols(taxa_boot) %>% bind_cols(seqtab.nochim_trans)
 
 
-#### 5.7.12 Filter for 18S ####
+#### Filter for 18S ####
 # Define a minimum bootstrap value for filtering
+# Think before applying the cut-off! What is the benefits of removing 
+# OTUs with low support? What are the drawbacks? 
 bootstrap_min <- 80
 
 # Remove OTU with annotation below the bootstrap value
 seqtab.nochim_18S <- seqtab.nochim_trans %>% dplyr::filter(Supergroup_boot >=
                                                              bootstrap_min)
+seqtab.nochim_18S_lowsupport<- seqtab.nochim_trans %>% dplyr::filter(Supergroup_boot <=
+                                                                       bootstrap_min)
 write_tsv(seqtab.nochim_18S, str_c(dada2_dir, "dada2.database.tsv"))
+write_tsv(seqtab.nochim_18S_lowsupport, str_c(dada2_dir, "dada2.database.lowsupport.tsv"))
 
-
-#### 5.7.13 Write FASTA file for BLAST analysis with taxonomy ####
+####  Write FASTA file for BLAST analysis with taxonomy ####
 # Blasting is an alternative to RDP classifier:
 
-df <- seqtab.nochim_18S
+df <- seqtab.nochim_trans
 seq_out <- Biostrings::DNAStringSet(df$sequence)
 
 names(seq_out) <- str_c(df$OTUNumber, df$Supergroup, df$Division, df$Class,
                         df$Order, df$Family, df$Genus, df$Species, df$Species_boot1, sep = "|")
 
-Biostrings::writeXStringSet(seq_out, str_c(blast_dir, "ASV.fasta"), compress = FALSE,
+Biostrings::writeXStringSet(seq_out, str_c(blast_dir, "OTU.fasta"), compress = FALSE,
                             width = 20000)
 
 #### EXTRA Example for blast on Saga ####
@@ -345,8 +358,8 @@ Biostrings::writeXStringSet(seq_out, str_c(blast_dir, "ASV.fasta"), compress = F
 #module purge
 #module load BLAST+/2.8.1-intel-2018b
 #
-#FASTA=OsloFjord_ASV.fasta
-#BLAST_TSV=OsloFjord_.blast.tsv
+#FASTA=OTU.fasta
+#BLAST_TSV=OTU.blast.tsv
 #DB=/cluster/shared/databases/blast/latest/nt
 #
 #
@@ -359,10 +372,13 @@ Biostrings::writeXStringSet(seq_out, str_c(blast_dir, "ASV.fasta"), compress = F
 samdf <- data.frame(sample_name = sample.names)
 rownames(samdf) <- sample.names
 
-OTU <- seqtab.nochim_18S %>% column_to_rownames("OTUNumber") %>% select_if(is.numeric) %>%
+rownames(seqtab.nochim_18S)<-seqtab.nochim_18S$OTUNumber
+
+
+OTU <- seqtab.nochim_18S %>% select_if(is.numeric) %>%
   select(-contains("_boot")) %>% as.matrix() %>% otu_table(taxa_are_rows = TRUE)
 
-TAX <- seqtab.nochim_18S %>% column_to_rownames("OTUNumber") %>% select(Kingdom:Species) %>%
+TAX <- seqtab.nochim_18S %>% select(Kingdom:Species) %>%
   as.matrix() %>% tax_table()
 
 ps_dada2 <- phyloseq(OTU, sample_data(samdf), TAX)
@@ -370,10 +386,10 @@ ps_dada2 <- phyloseq(OTU, sample_data(samdf), TAX)
 ### Saving and loading data ####
 # You can save selected objects:
 saveRDS(ps_dada2, str_c(dada2_dir, "phyloseq.rds"))
-# ps_dada2<-readRDS(str_c(dada2_dir, "OsloFjord_phyloseq.rds"))
+# ps_dada2<-readRDS(str_c(dada2_dir, "phyloseq.rds"))
 
 # Or save the entire workspace:
-save.image(str_c(dada2_dir, "DADA2.Rdata"))
+# save.image("dada2.RData")
 #
 # Can be loaded with
-# load("dada2/OsloFjord_DADA2.Rdata"")
+# load("dada2.RData"")
