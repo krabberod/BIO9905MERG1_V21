@@ -66,7 +66,7 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 
 ---
 # Software
-We will use R and Rstduio in this course.
+We will use R (version 4.0.5 or later) and Rstudio (version 1.4.1 or later) in this course.
 
 **Everybody should download and install R (https://www.r-project.org/), Rstudio (https://www.rstudio.com/) and the required packages before the course starts**.
 
