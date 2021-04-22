@@ -16,11 +16,13 @@ install.packages("tibble")    # To work with data frames
 install.packages("tidyr")     # To work with data frames
 install.packages("stringr")   # To manipulate strings
 install.packages("ggplot2")   # To do plots
+install.packages("tidyverse")
+
 
 install.packages("Matrix")	# Manipulation of large matrices
 install.packages("igraph")	# Network analysis
-install.packages("standardize")
-install.packages("vegan")
+#install.packages("standardize")
+#install.packages("vegan")
 #install.packages("cowplot")
 
 install.packages("devtools")
