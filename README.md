@@ -1,7 +1,7 @@
 # Bioinformatics for Environmental Sequencing (DNA metabarcoding)
 #### BIO9905MERG1 Spring 2021
 
-# UNDER CONSTRUCTION
+### UNDER CONSTRUCTION
 
 ## Course content
 For mapping and exploring communities of both micro- and macroorganisms, high throughput sequencing (HTS) of environmental DNA has become a powerful approach. One can either analyze the total DNA content to obtain knowledge about which genes are present (DNA metagenomics) or sequence a selected PCR amplified marker (DNA metabarcoding) to obtain information about the taxonomic composition. We will focus on the latter approach in this course. The students will be introduced to important analytical bioinformatics approaches from processing of raw sequence data to establishment of the OTU/sample matrix and retrieval of taxonomic identity of the sequences.
@@ -40,9 +40,9 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 |              | 11:00        | [Continuation DADA2](Dada2_Pipeline)                    | Anders K. Krabberød                  |
 |              | 12:00        | _Lunch break_                                           |                                      |
 |              | 12:45        | Contamination issues during DNA metabarcoding           | Kristine Bohmann                     |
-|              | 14:00        | Continuation DADA2](Dada2_Pipeline) (+ VSEARCH?)        | Ramiro Logares / Anders K. Krabberød |
+|              | 14:00        | [Continuation DADA2](Dada2_Pipeline) (+ VSEARCH?)        | Ramiro Logares / Anders K. Krabberød |
 |              | 15:00        | Diet analyses                                           | Galina Gusarova                      |
-| **Wednesday* | 09:00        | Taxonomic assignment                                    | Marie Davey                          |
+| **Wednesday** | 09:00        | Taxonomic assignment                                    | Marie Davey                          |
 |              | 10:00        | Discussion groups                                       | Håvard Kauserud and others           |
 |              | 11:00        | Flexible time                                           |                                      |
 |              | 12:00        | _Lunch break_                                           |                                      |
@@ -63,6 +63,14 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 |              | 12:45        | Flexible time                                           |                                      |
 |              | 14:00        | Discussion groups                                       | Håvard Kauserud                      |
 |              | 15:00        | DNA-metabarcoding - where are we going?                 | Pierre Taberlet                      |
+
+---
+# Software
+We will use R and Rstduio in this course.
+
+**Everybody should download and install R (https://www.r-project.org/), Rstudio (https://www.rstudio.com/) and the required packages before the course starts**.
+
+For more information about reuqired packages [Click here](Setup/).
 
 ---
 
