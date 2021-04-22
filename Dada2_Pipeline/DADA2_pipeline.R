@@ -49,13 +49,13 @@ database_dir <- "databases/"  # folder with the PR2 database https://github.com/
 
 filtered_dir <- "fastq_filtered/"  # fastq filtered
 qual_dir <- "qual_pdf/"  # qual pdf
-dada2_dir <- "dada2_out/"  # dada2 results
+dada2_dir <- "dada2_results/"  # dada2 results
 blast_dir <- "blast/"  # blast2 results
 
 
 dir.create(filtered_dir)
 dir.create(qual_dir)
-dir.create(dada2_dir)
+dir.create((dada2_dir))
 dir.create(blast_dir)
 
 #### Primers
@@ -310,8 +310,8 @@ taxo_assign<-proc.time() - ptm
 write_tsv(as_tibble(taxa$tax), file = str_c(dada2_dir, "taxa.txt"))
 #write.csv(taxa$tax, file = str_c(dada2_dir, "taxa.txt"))
 
-write_tsv(as_tibble(taxa$boot), file = str_c(dada2_dir, "taxa_boot.txt"))
-write_tsv(as_tibble(seqtab.nochim), file = str_c(dada2_dir, "seqtab.txt"))
+#write_tsv(as_tibble(taxa$boot), file = str_c(dada2_dir, "taxa_boot.txt"))
+#write_tsv(as_tibble(seqtab.nochim), file = str_c(dada2_dir, "seqtab.txt"))
 
 
 #### Appending taxonomy and boot to the sequence table ####
@@ -331,8 +331,8 @@ seqtab.nochim_18S <- seqtab.nochim_trans %>% dplyr::filter(Supergroup_boot >=
                                                              bootstrap_min)
 seqtab.nochim_18S_lowsupport<- seqtab.nochim_trans %>% dplyr::filter(Supergroup_boot <=
                                                                        bootstrap_min)
-write_tsv(seqtab.nochim_18S, str_c(dada2_dir, "dada2.database.tsv"))
-write_tsv(seqtab.nochim_18S_lowsupport, str_c(dada2_dir, "dada2.database.lowsupport.tsv"))
+write_tsv(seqtab.nochim_18S, str_c(dada2_dir, "OTU_table.tsv"))
+write_tsv(seqtab.nochim_18S_lowsupport, str_c(dada2_dir, "OTU_table_lowsupport.tsv"))
 
 ####  Write FASTA file for BLAST analysis with taxonomy ####
 # Blasting is an alternative to RDP classifier:
