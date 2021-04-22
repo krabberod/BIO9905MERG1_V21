@@ -87,5 +87,3 @@ You can find the PDFs [here:](Suggested_reading/)
 - Lamb et al. 2019. How quantitative is metabarcoding: A meta‐analytical approach. Molecular Ecology, 28, 420-430.
  -Jamy et al. 2019. Long-read metabarcoding of the eukaryotic rDNA operon to phylogenetically and taxonomically resolve environmental diversity. Molecular Ecology Resources, 20, 429-443.
  ----
-
-![](images/2021/04/sdl_logo_rsrch_eng.png)
