@@ -16,7 +16,7 @@ install.packages("tibble")    # To work with data frames
 install.packages("tidyr")     # To work with data frames
 install.packages("stringr")   # To manipulate strings
 install.packages("ggplot2")   # To do plots
-install.packages("tidyverse")
+install.packages("tidyverse") # To manipulate and visualize data
 
 
 install.packages("Matrix")	# Manipulation of large matrices
