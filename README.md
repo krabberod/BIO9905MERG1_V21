@@ -40,7 +40,7 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 |              | 11:00        | [Continuation DADA2](Dada2_Pipeline)                    | Anders K. Krabberød                  |
 |              | 12:00        | _Lunch break_                                           |                                      |
 |              | 12:45        | Contamination issues during DNA metabarcoding           | Kristine Bohmann                     |
-|              | 14:00        | [Continuation DADA2](Dada2_Pipeline) (+ VSEARCH?)        | Ramiro Logares / Anders K. Krabberød |
+|              | 14:00        | [Continuation DADA2](Dada2_Pipeline)         | Ramiro Logares / Anders K. Krabberød |
 |              | 15:00        | Diet analyses                                           | Galina Gusarova                      |
 | **Wednesday** | 09:00        | Taxonomic assignment                                    | Marie Davey                          |
 |              | 10:00        | Discussion groups                                       | Håvard Kauserud and others           |
