@@ -70,7 +70,7 @@ We will use R and Rstduio in this course.
 
 **Everybody should download and install R (https://www.r-project.org/), Rstudio (https://www.rstudio.com/) and the required packages before the course starts**.
 
-For more information about reuqired packages [Click here](Setup/).
+For more information about required packages [Click here](Setup/).
 
 ---
 
