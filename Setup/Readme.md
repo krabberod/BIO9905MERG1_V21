@@ -40,7 +40,6 @@ if (!requireNamespace("BiocManager", quietly = TRUE))  install.packages("BiocMan
 BiocManager::install(c("dada2", "phyloseq","Biostrings"))
 BiocManager::install("microbiome")
 #BiocManager::install("SpiecEasi") #Network construction
-
 library(devtools)
 install_github("zdk123/SpiecEasi")
 ```
