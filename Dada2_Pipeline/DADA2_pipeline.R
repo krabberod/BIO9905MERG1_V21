@@ -30,6 +30,7 @@ qual_dir <- "qual_pdf/"  # quality scores plots
 dada2_dir <- "dada2_results/"  # dada2 results
 blast_dir <- "blast/"  # blast2 results
 
+# Create the directories
 dir.create(filtered_dir)
 dir.create(qual_dir)
 dir.create((dada2_dir))
@@ -100,7 +101,7 @@ for (i in 1:length(fns)) {
     print(p1)
   }
 
-  # save the file as a pdf file (uncomment to execute)
+  # save the file as a pdf file 
   p1_file <- paste0(qual_dir, basename(fns[i]), ".qual.pdf")
 
   ggsave(plot = p1, filename = p1_file, device = "pdf", width = 15, height = 15,
@@ -110,7 +111,7 @@ for (i in 1:length(fns)) {
 
 
 ####
-# Prepare the outputnames for filteres reads:
+# Prepare the outputnames for filtered reads:
 filt_R1 <- str_c(filtered_dir, sample.names, "_R1_filt.fastq")
 filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 
@@ -118,63 +119,42 @@ filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 ####FILTER WITH CUTADAPT (not executed inside R)
 # Cutadapt is the preferred way of filtering sequences, because it will trim
 # primers allowing some mismatches and ambiguities. It is not implemented
-# in R at the moment, however so we filter using the length of the primer
-# as one of the filtering criteria instead (see next step 5.6.3).
+# in R at the moment. But you should have learned how to do prior to using this pipeline. 
 # Why is this not an optimal solution?
-# If time permits and you want to use cutadapt you can install it on your system and run it
-# outside R. https://cutadapt.readthedocs.io/en/stable/guide.html
-# Alternatively install the following package and do it in R (not tested)
+
+
+# Alternatively install the following package and do it in R (not tested, as of april 2021)
 # library(devtools)
 # install_github("omicsCore/SEQprocess")
 # cutadpat(fq1, output.dir, adpat.seq="insert primer sequence here", m=1, mc.cores=1, run.cmd=TRUE)
 
 
 #### SIMPLE FILTER BY LENGTH OF PRIMER
-ptm <- proc.time()
+# This is is a workaround if you can't filter by any other means. However, it is highly 
+# advisable to remove the primers with for instance cutadatp. 
+
 out <- filterAndTrim(fns_R1, filt_R1, fns_R2, filt_R2, truncLen = c(250, 200),
                      trimLeft = c(primer_length_fwd, primer_length_rev), maxN = 0,
                      maxEE = c(2, 2), truncQ = 2, rm.phix = TRUE,
                      compress = FALSE, multithread = FALSE)
-proc.time() - ptm
-
-# NOTE OLD DATASET
-#user  system elapsed
-#295.232  36.816 372.188
-
-#user  system elapsed
-#99.445  11.819 151.329
 
 #### DADA2 ####
 # If your setup allows running multiple threads set multithread = TRUE
 # Windows: multithread = FALSE
+# Can take a couple of mminutes: 
 
-ptm <- proc.time()
 err_R1 <- learnErrors(filt_R1, multithread = TRUE)
 plotErrors(err_R1, nominalQ = TRUE)
-learn_error_time_multi<- proc.time() - ptm
 
-# On a MacbookPro mid 2015
-# user   system  elapsed
-# 1270.760   36.343  752.838
-
-ptm <- proc.time()
 err_R2 <- learnErrors(filt_R2, multithread = T)
 plotErrors(err_R2, nominalQ = TRUE)
-learn_error_time_nomulti<- proc.time() - ptm
-
-learn_error_time_multi
-learn_error_time_nomulti
 
 
-#### 5.7.2 Dereplicate the reads ####
-ptm <- proc.time()
+#### Dereplicate the reads ####
+
 derep_R1 <- derepFastq(filt_R1, verbose = FALSE)
 derep_R2 <- derepFastq(filt_R2, verbose = FALSE)
-proc.time() - ptm
 
-# MacBook
-#user  system elapsed
-#15.739   3.058  19.755
 # Name the derep-class objects by the sample names
 names(derep_R1) <- sample.names
 names(derep_R2) <- sample.names
@@ -185,16 +165,7 @@ names(derep_R2) <- sample.names
 ptm <- proc.time()
 dada_R1 <- dada(derep_R1, err = err_R1, multithread = TRUE, pool = FALSE)
 dada_mulit<-proc.time() - ptm
-
-# Mac
-# user  system elapsed
-# 226.673   2.545  83.259
-
-#ptm <- proc.time()
-
 dada_R2 <- dada(derep_R2, err = err_R2, multithread = T, pool = FALSE)
-
-#dada_nomulit<-proc.time() - ptm
 
 # Viewing the first entry in each of the dada objects
 dada_R1[[1]]
