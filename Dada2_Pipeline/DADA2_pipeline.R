@@ -1,24 +1,3 @@
-### Install Packages ####
-# Skip this if you have already installed the packages
-
-install.packages("readr")     # To read and write files
-install.packages("readxl")    # To read excel files
-install.packages("dplyr")     # To manipulate dataframes
-install.packages("tibble")    # To work with data frames
-install.packages("tidyr")     # To work with data frames
-install.packages("stringr")   # To manipulate strings
-install.packages("ggplot2")   # To do plots
-install.packages("kableExtra")  # necessary for nice table formatting with knitr
-
-if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
-#BiocManager::install(version = "3.10")
-BiocManager::install(c("dada2", "phyloseq","Biostrings"))
-
-install.packages("devtools")
-devtools::install_github("pr2database/pr2database")
-
-
 #### Load libraries ####
 
 library("dada2")
@@ -31,27 +10,25 @@ library("tibble")
 library("readxl")
 library("readr")
 library("stringr")
-library("kableExtra") 
+library("kableExtra")
 library("tidyverse")
-#library("pr2database")
 
 #### Prepare Directories ####
-# Check your current working directory: 
+# Check your current working directory:
 getwd()
 
-# If you want to set a new working directory: 
+# If you want to set a new working directory:
 # setwd("~/path_to_my_directory/DADA2_pipeline")
 
 
-# Define the name of directories to use. 
-fastq_dir <- "fastq"  # fastq directory with the samples we are using
+# Define the name of directories to use.
+fastq_dir <- "fastq"  # fastq directory with the samples that will be used
 database_dir <- "databases/"  # folder with the PR2 database https://github.com/vaulot/metabarcodes_tutorials/tree/master/databases
 
-filtered_dir <- "fastq_filtered/"  # fastq filtered
-qual_dir <- "qual_pdf/"  # qual pdf
+filtered_dir <- "fastq_filtered/"  # for the fastq-files after filtering
+qual_dir <- "qual_pdf/"  # quality scores plots
 dada2_dir <- "dada2_results/"  # dada2 results
 blast_dir <- "blast/"  # blast2 results
-
 
 dir.create(filtered_dir)
 dir.create(qual_dir)
@@ -67,13 +44,6 @@ primer_set_rev = c("ACTTTCGTTCTTGATYRATGA")
 primer_length_fwd <- str_length(primer_set_fwd[1])
 primer_length_rev <- str_length(primer_set_rev[1])
 
-#### PR2 taxonomic levels
-# This step depends on the kind of taxonomic assignment that will be used later 
-# The PR2 database is a curated quality database for Proitst, with 8 taxonomic ranks
-
-PR2_tax_levels <- c("Kingdom", "Supergroup", "Division", "Class", 
-                    "Order", "Family",
-                    "Genus", "Species")
 
 #### Examine fastq files
 # get a list of all fastq files in the fastq" directory and separate R1 and R2
@@ -84,7 +54,7 @@ fns_R2 <- fns[str_detect(basename(fns), "R2")]
 
 # Extract sample names, assuming filenames have format: 18S_SAMPLENAME_XXX.fastq.gz
 sample.names <- str_split(basename(fns_R1), pattern = "_", simplify = TRUE)
-sample.names <- sample.names[, 2] 
+sample.names <- sample.names[, 2]
 
 #### Make a dataframe with the number of sequences in each file ####
 # NB! Any sequence of length 0 will cause the loop to crash
@@ -114,7 +84,7 @@ View(df)
 # plot the histogram with number of sequences
 # The plot for the example data looks kind of uninformative, why?
 
-ggplot(df, aes(x = n_seq)) + 
+ggplot(df, aes(x = n_seq)) +
   geom_histogram(alpha = 0.5, position = "identity", binwidth = 15000)
 
 hist(df$n_seq, breaks = 10)
@@ -139,8 +109,8 @@ for (i in 1:length(fns)) {
 
 
 
-#### 
-# Prepare the outputnames for filteres reads: 
+####
+# Prepare the outputnames for filteres reads:
 filt_R1 <- str_c(filtered_dir, sample.names, "_R1_filt.fastq")
 filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 
@@ -168,10 +138,10 @@ out <- filterAndTrim(fns_R1, filt_R1, fns_R2, filt_R2, truncLen = c(250, 200),
 proc.time() - ptm
 
 # NOTE OLD DATASET
-#user  system elapsed 
-#295.232  36.816 372.188 
+#user  system elapsed
+#295.232  36.816 372.188
 
-#user  system elapsed 
+#user  system elapsed
 #99.445  11.819 151.329
 
 #### DADA2 ####
@@ -184,8 +154,8 @@ plotErrors(err_R1, nominalQ = TRUE)
 learn_error_time_multi<- proc.time() - ptm
 
 # On a MacbookPro mid 2015
-# user   system  elapsed 
-# 1270.760   36.343  752.838 
+# user   system  elapsed
+# 1270.760   36.343  752.838
 
 ptm <- proc.time()
 err_R2 <- learnErrors(filt_R2, multithread = T)
@@ -203,8 +173,8 @@ derep_R2 <- derepFastq(filt_R2, verbose = FALSE)
 proc.time() - ptm
 
 # MacBook
-#user  system elapsed 
-#15.739   3.058  19.755 
+#user  system elapsed
+#15.739   3.058  19.755
 # Name the derep-class objects by the sample names
 names(derep_R1) <- sample.names
 names(derep_R2) <- sample.names
@@ -217,8 +187,8 @@ dada_R1 <- dada(derep_R1, err = err_R1, multithread = TRUE, pool = FALSE)
 dada_mulit<-proc.time() - ptm
 
 # Mac
-# user  system elapsed 
-# 226.673   2.545  83.259 
+# user  system elapsed
+# 226.673   2.545  83.259
 
 #ptm <- proc.time()
 
@@ -282,37 +252,41 @@ Biostrings::writeXStringSet(seq_out, str_c(dada2_dir, "OTU_no_taxonomy.fasta"),
 # The PR2 database can be found here:
 # https://pr2-database.org/
 # The PR2 database has preformatted files suitable for dada2  for both 18S and 16S
-# 
+#
+# This step depends on the kind of taxonomic assignment that will be used later
+# The PR2 database is a curated quality database for protissts, with 8 taxonomic ranks
+
+PR2_tax_levels <- c("Kingdom", "Supergroup", "Division", "Class",
+                    "Order", "Family",
+                    "Genus", "Species")
 
 pr2_file <- paste0("databases/pr2_version_4.13.0_18S_dada2.fasta.gz")
 
-# OBS! The next step takes a long time. ~45 min on a medium fast PC...
+# OBS! The next step takes a long time. ~45-60 min on a medium fast computer...
 # So in case we are running late skip this next command. If we have time
-# start the process (i.e. remove hashtags), and have some coffee.
+# start the process (i.e. remove hashtags), and have some coffee/lunch.
 
-ptm <- proc.time()
-#taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
+# ptm <- proc.time()
+# taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
 #                       minBoot = 0, outputBootstraps = TRUE, verbose = TRUE)
-taxo_assign<-proc.time() - ptm
+# taxo_assign<-proc.time() - ptm
 
-#user   system  elapsed 
-#6612.075  504.603 2576.869 
+### Runtime result:
+# user   system  elapsed
+# 6612.075  504.603 2576.869
 
-
-#saveRDS(taxa, str_c(dada2_dir, "dada2.taxa.rds"))
-
+# Single objects can be saved to a file with the saveRDS() function.
+# saveRDS(taxa, str_c(dada2_dir, "dada2.taxa.rds"))
 # I have prepared a taxonomy file that I can put on github, if necessary.
-
 # taxa <- readRDS(str_c(dada2_dir, "taxa.rds"))
 # Seqtab.nochim_trans <- read.RDS(str_c("seqtab.nochim_trans.rds"))
 
 # Export information in tab or comma separated files
+# Tab:
 write_tsv(as_tibble(taxa$tax), file = str_c(dada2_dir, "taxa.txt"))
+
+# Csv:
 #write.csv(taxa$tax, file = str_c(dada2_dir, "taxa.txt"))
-
-#write_tsv(as_tibble(taxa$boot), file = str_c(dada2_dir, "taxa_boot.txt"))
-#write_tsv(as_tibble(seqtab.nochim), file = str_c(dada2_dir, "seqtab.txt"))
-
 
 #### Appending taxonomy and boot to the sequence table ####
 taxa_tax <- as.data.frame(taxa$tax)
@@ -322,8 +296,8 @@ seqtab.nochim_trans <- taxa_tax %>% bind_cols(taxa_boot) %>% bind_cols(seqtab.no
 
 #### Filter for 18S ####
 # Define a minimum bootstrap value for filtering
-# Think before applying the cut-off! What is the benefits of removing 
-# OTUs with low support? What are the drawbacks? 
+# Think before applying the cut-off! What is the benefits of removing
+# OTUs with low support? What are the drawbacks?
 bootstrap_min <- 80
 
 # Remove OTU with annotation below the bootstrap value
@@ -346,10 +320,10 @@ names(seq_out) <- str_c(df$OTUNumber, df$Supergroup, df$Division, df$Class,
 Biostrings::writeXStringSet(seq_out, str_c(blast_dir, "OTU.fasta"), compress = FALSE,
                             width = 20000)
 
-#### EXTRA Example for blast on Saga ####
+#### EXTRA Example for blast on the cluster Saga ####
 ##!/bin/sh
 ##SBATCH --job-name=blastn
-##SBATCH --account=nn9525k #replace with your own project
+##SBATCH --account= #add your own project
 ##SBATCH --output=slurm-%j.base
 ##SBATCH --cpus-per-task=16
 ##SBATCH --time=100:00:00
@@ -390,6 +364,7 @@ saveRDS(ps_dada2, str_c(dada2_dir, "phyloseq.rds"))
 
 # Or save the entire workspace:
 # save.image("dada2.RData")
-#
+
+# Which can be loaded with:
 # Can be loaded with
 # load("dada2.RData"")
