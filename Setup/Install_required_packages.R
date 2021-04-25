@@ -20,10 +20,11 @@ install.packages("tidyverse") # To manipulate and visualize data
 
 
 install.packages("Matrix")	# Manipulation of large matrices
+install.packages("wTO") 	# Newtork analysis
 install.packages("igraph")	# Network analysis
 #install.packages("standardize")
-#install.packages("vegan")
-#install.packages("cowplot")
+install.packages("vegan")
+install.packages("magrittr") 
 
 install.packages("devtools")
 
