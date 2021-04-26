@@ -24,7 +24,7 @@ install.packages("wTO") 	# Newtork analysis
 install.packages("igraph")	# Network analysis
 #install.packages("standardize")
 install.packages("vegan")
-install.packages("magrittr") 
+install.packages("magrittr")
 
 install.packages("devtools")
 
@@ -33,5 +33,16 @@ BiocManager::install(c("dada2", "phyloseq","Biostrings"))
 BiocManager::install("microbiome")
 #BiocManager::install("SpiecEasi") #Network construction
 
+# Network packages
 library(devtools)
 install_github("zdk123/SpiecEasi")
+# This package might cause a problem. Here are some possible solutions: 
+# https://thecoatlessprofessor.com/programming/cpp/r-compiler-tools-for-rcpp-on-macos/
+# https://stackoverflow.com/questions/37776377/error-when-installing-an-r-package-from-github-could-not-find-build-tools-neces
+
+
+# For timing processes
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("muscle")
+install.packages("ptm")

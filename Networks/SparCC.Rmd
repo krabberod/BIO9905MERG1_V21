@@ -25,7 +25,7 @@ In this example we will look at networks generared with sparCC (Friedman and Alm
 
 ### Load necessary packages
 First wee need to Load necessary packages, and install SpiecEasi if necessary.
-```{r}
+```{r include=FALSE}
 
 library(igraph)
 library(phyloseq)
@@ -35,33 +35,34 @@ library(SpiecEasi)
 library(Matrix)
 ```
 
-We also need to load the phyloseq object created by Dada2. Adjust the path if necessary.
+We also need to load the phyloseq object created by Dada2. Adjust the path if necessary.Or you use the prevalence-filtered data from the wTO exercise
 ```{r}
-phyloseq <- readRDS("phyloseq.rds")
+otus_phyloseq <- readRDS("./../Dada2_Pipeline/dada2_results/phyloseq.rds")
 
-# Function to remove samples, these have NA for all ctd-data. Not executed
-#phyloseq<-subset_samples(phyloseq, sample_names(phyloseq) != "S07")
-#phyloseq<-subset_samples(phyloseq, sample_names(phyloseq) != "S09")
+# How to remove samples, these have NA for all ctd-data. Not executed
+# otus_phyloseq<-subset_samples(otus_phyloseq, sample_names(otus_phyloseq) != "ENTER_THE_NAME_HERE")
 
 #Make year into factor
-sample_data(phyloseq)$Year <- as.character(sample_data(phyloseq)$Year)
+#sample_data(otus_phyloseq)$Year <- as.character(sample_data(otus_phyloseq)$Year)
 
 phyloseq
 
 ```
 
+
+
 ### Run sparCC
-Phyloseq comes with a wrapper that makes running sparcc easy.   
+Phyloseq comes with a wrapper that makes running SparCC easy.   
 First we look at how the samples relates to each other, based on the correlation between read abundance of the otus.
 
 ```{r}
 system.time({
-sparcc.samples <- sparcc(otu_table(phyloseq), iter=200,inner_iter=100)
+sparcc.samples <- sparcc(otu_table(otus_phyloseq), iter=200,inner_iter=100)
 str(sparcc.samples)
 })
 ```
 
-The sparcc object contains two list, the co-variance score and the correlation. In addition you should get boostrap and empirical p-values for the network. This takes some time, since the data is permutated and networks correlation scores are calculated may times over.
+The sparcc object contains two list, the co-variance score and the correlation. In addition you should get bootstrap and empirical p-values for the network. This takes some time, since the data is permuted and networks correlation scores are calculated may times over.
 
 ```{#r}
 sparcc.samples.boot <- sparccboot(otu_table(phyloseq), R =100, ncpu=4)
@@ -89,7 +90,7 @@ sparcc.graph <- adj2igraph(sparcc.graph.matrix, vertex.attr = list(name=row.name
 sparcc.graph
 ```
 
-- The graph has 17 vertices (node/otus) and 20 edges   
+- The graph has xx vertices (node/otus) and xx edges   
 - Attribute for the vertices (v/c) is `name` (i.e. the otu name)
 - Attribute for the edges (e/n) is `weight` (i.e. the otu name)
 - It is possible to add more attributes to either edges or vertices using `V(phyloseq_object)$new_attribute` and `E(phyloseq_object)$new_attribute`for the edges.
@@ -101,7 +102,7 @@ sparcc.graph
 degree(sparcc.graph)
 #degree.distribution(sparcc.graph)
 
-# extract the correaltion score for the graph
+# extract the correlation score for the graph
 elist.sparcc<- summary(sparcc.graph.matrix*sparcc.samples$Cor)
 elist.sparcc
 
@@ -202,7 +203,7 @@ hist(elist.sparcc$x, breaks = 20)
 ```
 
 ### Plotting
-Plotting otus will give amuc more clutterd graph than the samples, due to the high number elements (edges and nodes)
+Plotting otus will give a much more cluttered graph than the samples, due to the high number elements (edges and nodes)
 
 ```{r}
 plot(sparcc.outs.graph,vertex.size=1)
@@ -224,6 +225,7 @@ plot_network(simplified.graph, phyloseq,type= "taxa", color = "Supergroup")
 
 ### Saving the network
 There are several different formats for saving, example with graphml.
+graphml object can be opened in other programs. Fro instance Cytoscape is goof for vizualisation of networks.
 
 ```{r}
 write.graph(sparcc.outs.graph, "sparcc.outs.graphml", format = "graphml")

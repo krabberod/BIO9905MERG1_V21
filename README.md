@@ -1,7 +1,6 @@
 # Bioinformatics for Environmental Sequencing (DNA metabarcoding)
-#### BIO9905MERG1 Spring 2021
-
-### UNDER CONSTRUCTION
+**This pages contains course material for BIO9905MERG1 Spring 2021**
+For Univeristy of Oslo [webpage, click here](https://www.uio.no/studier/emner/matnat/ibv/BIO9905MERG1/).
 
 ## Course content
 For mapping and exploring communities of both micro- and macroorganisms, high throughput sequencing (HTS) of environmental DNA has become a powerful approach. One can either analyze the total DNA content to obtain knowledge about which genes are present (DNA metagenomics) or sequence a selected PCR amplified marker (DNA metabarcoding) to obtain information about the taxonomic composition. We will focus on the latter approach in this course. The students will be introduced to important analytical bioinformatics approaches from processing of raw sequence data to establishment of the OTU/sample matrix and retrieval of taxonomic identity of the sequences.
@@ -15,7 +14,10 @@ The course will be a blend of presentations, guest lectures, discussion and a fe
 The course will run 3-7 May 9am-4(5)pm in zoom. For a detailed overview of the program, see below. The zoom link will be provided.
 
 ## Report
-Those of you that attend the course through the research schools or UiO and want to obtain ECT credits, will have to hand in a short report a few weeks after the course. You should here write about how you would carry out a fictional environmental sequencing study. We will provide more information about this.
+Those of you that attend the course through the research schools or UiO and want to obtain ECTS credits, will have to hand in a report before June 1th.
+For the report, you should write a 5-page text (minimum) about a fictive research project where you will use DNA-metabarcoding to explore the community composition and diversity of a certain habitat and/or ecological gradient. You are free to select the organismal group(s) and the habitat/gradient. In the text you should: (1) define the goal(s) of the study, (2) describe the sampling design, (3) the wet-lab work (briefly) and, most important, (4) the bioinformatics analyses. Not only describe how you plan to carry out the research, but also why you make your choices. On point (4), describe in detail how you plan to analyze your data and which bioinformatics approaches you will use and why. Also mentioned what you expect to be problematic and which steps that might introduce bias(es) to your results, as well as what type of bias(es). Concerning the format, you should use Times New Roman size 12, 1.5 line spacing and 2.5 cm margins.
+
+The report should be sent to: haavarka@ibv.uio.no
 
 ## Teachers
 Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Torbjørn Rognes and Håvard Kauserud (organizer), but other experts will provide guest lectures (see table).
