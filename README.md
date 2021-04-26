@@ -1,5 +1,5 @@
 # Bioinformatics for Environmental Sequencing (DNA metabarcoding)
-**This pages contains course material for BIO9905MERG1 Spring 2021**
+**This pages contains course material for BIO9905MERG1 Spring 2021**  
 For Univeristy of Oslo [webpage, click here](https://www.uio.no/studier/emner/matnat/ibv/BIO9905MERG1/).
 
 ## Course content
