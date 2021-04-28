@@ -1,12 +1,12 @@
 ### Under construction
 
-We will use R (version 4.0.5 or later) and Rstudio (version 1.4.1 or later) in this course.
+We will use R (version 4.0.5 or later) and Rstudio (version 1.4.1 or later) in this course. 
 
 Everybody should download and install R (https://www.r-project.org/), Rstudio (https://www.rstudio.com/) and the [required packages](Install_required_packages.R) before the course starts.
 
-You should have them installed before we the actual start of the course.
-Most analyses will be run in R. We highly recommned using Rstudio.
+It is preferable that you have all packages installed before the course starts. For those of you having trouble with installing the packages, we will provide some help Monday afternoon, 4pm, but we will not be able to provide comprehensive IT-service though.
 
+Content of [required packages](Install_required_packages.R):
 ```
 # Please make sure that you have the required R packages installed.
 # You can get a list of the package already installed on your computer s by executing
