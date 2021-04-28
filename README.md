@@ -36,7 +36,7 @@ Main teachers will be Ramiro Logares, Anders K.  Krabberød, Micah Dunthorn, Tor
 |               | 12:45        | Introduction to Linux and R/Rstudio                                  | Ramiro Logares/Anders K. Krabberød   |
 |               | 14:00        | Introduction to cutadapt and sequence cleaning                       | Ramiro Logares                       |
 |               | 15:00        | Introduction to VSEARCH (and SWARM)                                  | Torbjørn Rognes                      |
-|               | 16:00        | [Help with setup of required packages for DADA2](Setup)              | Anders K. Krabberød                  |
+|               | 16:00        | [Help with setup and i installation o required packages](Setup)              | Anders K. Krabberød                  |
 |               |              |                                                                      |                                      |
 | **Tuesday**   | 09:00        | [Introduction to DADA2](Dada2_Pipeline)                              | Anders K. Krabberød                  |
 |               | 10:00        | [Continuation DADA2](Dada2_Pipeline)                                 | Anders K. Krabberød                  |
