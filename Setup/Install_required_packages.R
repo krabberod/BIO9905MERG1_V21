@@ -25,18 +25,34 @@ install.packages("igraph")	# Network analysis
 #install.packages("standardize")
 install.packages("vegan")
 install.packages("magrittr")
+install.packages("spaa")           # Installs the ecological package spaa
+install.packages("compositions")   # To work with compositional data
+install.packages("zCompositions")  # To work with compositional data
+install.packages("devtools")       # Developer tools
+install.packages("mixOmics")       # Multivariate methods
+install.packages("ape")            # Phylogenetic tools
+install.packages("recluster")      # Clustering tools
+install.packages("dendextend")     # To work with dendrograms
+install.packages("corrplot")       # makes nice correlation plots
+install.packages("RcmdrMisc")      # diverse tools
+​
+
+
 
 install.packages("devtools")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))  install.packages("BiocManager")
-BiocManager::install(c("dada2", "phyloseq","Biostrings"))
+BiocManager::install(c("dada2", "phyloseq","Biostrings","PCAtools"))
 BiocManager::install("microbiome")
 #BiocManager::install("SpiecEasi") #Network construction
 
 # Network packages
 library(devtools)
 install_github("zdk123/SpiecEasi")
-# This package might cause a problem. Here are some possible solutions: 
+devtools::install_github("pr2database/pr2database") # Installs directly from github resources that are not in R repos
+devtools::install_github("GuillemSalazar/EcolUtils") # Installs other tools for ecological analyses
+devtools::install_github('fawda123/ggord')
+# This package might cause a problem. Here are some possible solutions:
 # https://thecoatlessprofessor.com/programming/cpp/r-compiler-tools-for-rcpp-on-macos/
 # https://stackoverflow.com/questions/37776377/error-when-installing-an-r-package-from-github-could-not-find-build-tools-neces
 
