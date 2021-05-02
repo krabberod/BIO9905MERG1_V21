@@ -167,7 +167,6 @@ names(derep_R2) <- sample.names
 # If your computer can run multiple threads set multithread = TRUE
 
 dada_R1 <- dada(derep_R1, err = err_R1, multithread = TRUE, pool = FALSE)
-dada_mulit<-proc.time() - ptm
 dada_R2 <- dada(derep_R2, err = err_R2, multithread = TRUE, pool = FALSE)
 
 # Viewing the first entry in each of the dada objects
@@ -243,7 +242,6 @@ pr2_file <- paste0("databases/pr2_version_4.13.0_18S_dada2.fasta.gz")
 
 # taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
 #                       minBoot = 0, outputBootstraps = TRUE, verbose = TRUE)
-# taxo_assign<-proc.time() - ptm
 
 ### Runtime result for a mid 2015 MacBook Pro
 # user   system  elapsed

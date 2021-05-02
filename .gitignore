@@ -2,6 +2,7 @@
 
 dada2_main/fastq_filtered/
 dada2_main/fastq_filtered/qual_pdf/
+dada2_main/*pptx
 *.fastq
 
 Intro_to_Rstudio/*pptx

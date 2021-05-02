@@ -71,5 +71,4 @@ devtools::install_github('fawda123/ggord')
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("muscle")
-install.packages("ptm")
 ```
