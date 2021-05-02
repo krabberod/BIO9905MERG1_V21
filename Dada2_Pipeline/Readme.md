@@ -12,6 +12,7 @@ This folder contains the necessary files and data to run the DADA2 pipeline in R
 - The samples have been demultiplexed, i.e. split into individual per-sample fastq files.
 - Primers and adapters and have been removed.
 - Paired-end data has been matched in the same order (i.e. sequences in the *R1* and *R2* fastq files arein the same order)
+- A link can be found in the DAD2 script
 
 
 The script is based on the DADA2 tutorial https://benjjneb.github.io/dada2/tutorial.html
