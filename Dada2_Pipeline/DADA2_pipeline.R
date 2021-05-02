@@ -1,5 +1,4 @@
 #### Load libraries ####
-
 library("dada2")
 library("phyloseq")
 library("Biostrings")
@@ -57,7 +56,7 @@ fns_R2 <- fns[str_detect(basename(fns), "R2")]
 sample.names <- str_split(basename(fns_R1), pattern = "_", simplify = TRUE)
 sample.names <- sample.names[, 2]
 
-#### Make a dataframe with the number of sequences in each file ####
+#### Prepare data: Make a dataframe with the number of sequences in each file ####
 # NB! Any sequence of length 0 will cause the loop to crash
 # These should be removed in advance
 
@@ -80,7 +79,6 @@ View(df)
 
 # If you want to write the table to your working directory remove the hashtag and use:
 # write.table(df, file = 'n_seq.txt', sep='\t', row.names = FALSE, na='',quote=FALSE)
-
 
 # plot the histogram with number of sequences
 # The plot for the example data looks kind of uninformative, why?
@@ -117,7 +115,7 @@ filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 
 
 ####FILTER WITH CUTADAPT (not executed inside R)
-# Cutadapt is the preferred way of filtering sequences, because it will trim
+# Cutadapt (or trimgalore) is the preferred way of filtering sequences, because it will trim
 # primers allowing some mismatches and ambiguities. It is not implemented
 # in R at the moment. But you should have learned how to do prior to using this pipeline. 
 # Why is this not an optimal solution?
@@ -128,21 +126,22 @@ filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 # install_github("omicsCore/SEQprocess")
 # cutadpat(fq1, output.dir, adpat.seq="insert primer sequence here", m=1, mc.cores=1, run.cmd=TRUE)
 
-
-#### SIMPLE FILTER BY LENGTH OF PRIMER
+#### DADA2 ####
+#### STEP 1. SIMPLE FILTER BY LENGTH OF PRIMER
 # This is is a workaround if you can't filter by any other means. However, it is highly 
 # advisable to remove the primers with for instance cutadatp. 
+
+# If your setup allows running multiple threads set multithread = TRUE
+# Mac OS: multithread = TRUE
+# Windows: multithread = FALSE, 
+# Can take a couple of minutes: 
 
 out <- filterAndTrim(fns_R1, filt_R1, fns_R2, filt_R2, truncLen = c(250, 200),
                      trimLeft = c(primer_length_fwd, primer_length_rev), maxN = 0,
                      maxEE = c(2, 2), truncQ = 2, rm.phix = TRUE,
-                     compress = FALSE, multithread = FALSE)
+                     compress = FALSE, multithread = TRUE)
 
-#### DADA2 ####
-# If your setup allows running multiple threads set multithread = TRUE
-# Windows: multithread = FALSE
-# Can take a couple of mminutes: 
-
+#### STEP 2. Learn Errors
 err_R1 <- learnErrors(filt_R1, multithread = TRUE)
 plotErrors(err_R1, nominalQ = TRUE)
 
@@ -150,7 +149,7 @@ err_R2 <- learnErrors(filt_R2, multithread = T)
 plotErrors(err_R2, nominalQ = TRUE)
 
 
-#### Dereplicate the reads ####
+#### STEP 3. Dereplicate the reads ####
 
 derep_R1 <- derepFastq(filt_R1, verbose = FALSE)
 derep_R2 <- derepFastq(filt_R2, verbose = FALSE)
@@ -159,23 +158,24 @@ derep_R2 <- derepFastq(filt_R2, verbose = FALSE)
 names(derep_R1) <- sample.names
 names(derep_R2) <- sample.names
 
+
+#### STEP 4. DADA2 main inference 
 ####  Sequence-variant inference algorithm on the dereplicated data ####
 # If your computer can run multiple threads set multithread = TRUE
 
-ptm <- proc.time()
 dada_R1 <- dada(derep_R1, err = err_R1, multithread = TRUE, pool = FALSE)
 dada_mulit<-proc.time() - ptm
-dada_R2 <- dada(derep_R2, err = err_R2, multithread = T, pool = FALSE)
+dada_R2 <- dada(derep_R2, err = err_R2, multithread = TRUE, pool = FALSE)
 
 # Viewing the first entry in each of the dada objects
 dada_R1[[1]]
 dada_R2[[1]]
 
-#### Merge Sequences
+#### STEP 5. Merge Sequences
 mergers <- mergePairs(dada_R1, derep_R1, dada_R2, derep_R2, verbose = TRUE)
 head(mergers[[1]])
 
-####   ####
+#### STEP 6. Merge  ####
 seqtab <- makeSequenceTable(mergers)
 dim(seqtab)
 # Make a transposed version of seqtab to make it similar to data in mothur
@@ -184,10 +184,10 @@ table(nchar(getSequences(seqtab)))
 plot(table(nchar(getSequences(seqtab)))) #simple plot of length distribution
 
 
-#### Remove chimeras ####
+#### STEP 7. Remove chimeras ####
 seqtab.nochim <- removeBimeraDenovo(seqtab, method = "consensus", multithread = FALSE,
                                     verbose = TRUE)
-
+# Get some stats: 
 # Compute % of non chimeras
 paste0("% of non chimeras : ", sum(seqtab.nochim)/sum(seqtab) * 100)
 paste0("total number of sequences : ", sum(seqtab.nochim))
@@ -212,6 +212,7 @@ seqtab.nochim_trans <- as.data.frame(t(seqtab.nochim)) %>% rownames_to_column(va
   rowid_to_column(var = "OTUNumber") %>% mutate(OTUNumber = sprintf("OTU_%05d",
                                                                     OTUNumber)) %>% mutate(sequence = str_replace_all(sequence, "(-|\\.)", ""))
 
+#### Extract the sequences and export them in a fasta file: 
 df <- seqtab.nochim_trans
 seq_out <- Biostrings::DNAStringSet(df$sequence)
 names(seq_out) <- df$OTUNumber
@@ -219,7 +220,7 @@ seq_out
 
 Biostrings::writeXStringSet(seq_out, str_c(dada2_dir, "OTU_no_taxonomy.fasta"),
                             compress = FALSE, width = 20000)
-#### Assinging taxonomy
+#### STEP 8. Assigning taxonomy
 # The PR2 database can be found here:
 # https://pr2-database.org/
 # The PR2 database has preformatted files suitable for dada2  for both 18S and 16S
@@ -237,15 +238,15 @@ pr2_file <- paste0("databases/pr2_version_4.13.0_18S_dada2.fasta.gz")
 # So in case we are running late skip this next command. If we have time
 # start the process (i.e. remove hashtags), and have some coffee/lunch.
 
-# ptm <- proc.time()
 # taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
 #                       minBoot = 0, outputBootstraps = TRUE, verbose = TRUE)
 # taxo_assign<-proc.time() - ptm
 
-### Runtime result:
+### Runtime result for a mid 2015 MacBook Pro 
 # user   system  elapsed
 # 6612.075  504.603 2576.869
 
+# In R it is possible sot save objects, or the full workspace. 
 # Single objects can be saved to a file with the saveRDS() function.
 # saveRDS(taxa, str_c(dada2_dir, "dada2.taxa.rds"))
 # I have prepared a taxonomy file that I can put on github, if necessary.
@@ -263,6 +264,11 @@ write_tsv(as_tibble(taxa$tax), file = str_c(dada2_dir, "taxa.txt"))
 taxa_tax <- as.data.frame(taxa$tax)
 taxa_boot <- as.data.frame(taxa$boot) %>% rename_all(funs(str_c(., "_boot")))
 seqtab.nochim_trans <- taxa_tax %>% bind_cols(taxa_boot) %>% bind_cols(seqtab.nochim_trans)
+
+#Check at the Kingdom-level for 
+unique(seqtab.nochim_trans$Kingdom)
+unique(seqtab.nochim_trans$Supergroup)
+
 
 
 #### Filter for 18S ####
@@ -291,7 +297,7 @@ names(seq_out) <- str_c(df$OTUNumber, df$Supergroup, df$Division, df$Class,
 Biostrings::writeXStringSet(seq_out, str_c(blast_dir, "OTU.fasta"), compress = FALSE,
                             width = 20000)
 
-#### EXTRA Example for blast on the cluster Saga ####
+#### EXTRA Example for blast on the cluster Saga (https://documentation.sigma2.no/hpc_machines/saga.html) ####
 ##!/bin/sh
 ##SBATCH --job-name=blastn
 ##SBATCH --account= #add your own project
