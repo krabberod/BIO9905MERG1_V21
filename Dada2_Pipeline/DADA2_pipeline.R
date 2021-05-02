@@ -13,6 +13,10 @@ library("kableExtra")
 library("tidyverse")
 
 #### Prepare Directories ####
+# The fastq files are in this zip-file:
+# https://www.dropbox.com/s/msgl7twjfxrcg2r/fastq.zip?dl=0
+# Download and unzip in your dada2 working directory.
+# The samples should be in a subfolder simply called "fastq"
 # Check your current working directory:
 getwd()
 
@@ -23,7 +27,6 @@ getwd()
 # Define the name of directories to use.
 fastq_dir <- "fastq"  # fastq directory with the samples that will be used
 database_dir <- "databases/"  # folder with the PR2 database https://github.com/vaulot/metabarcodes_tutorials/tree/master/databases
-
 filtered_dir <- "fastq_filtered/"  # for the fastq-files after filtering
 qual_dir <- "qual_pdf/"  # quality scores plots
 dada2_dir <- "dada2_results/"  # dada2 results
@@ -99,7 +102,7 @@ for (i in 1:length(fns)) {
     print(p1)
   }
 
-  # save the file as a pdf file 
+  # save the file as a pdf file
   p1_file <- paste0(qual_dir, basename(fns[i]), ".qual.pdf")
 
   ggsave(plot = p1, filename = p1_file, device = "pdf", width = 15, height = 15,
@@ -117,7 +120,7 @@ filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 ####FILTER WITH CUTADAPT (not executed inside R)
 # Cutadapt (or trimgalore) is the preferred way of filtering sequences, because it will trim
 # primers allowing some mismatches and ambiguities. It is not implemented
-# in R at the moment. But you should have learned how to do prior to using this pipeline. 
+# in R at the moment. But you should have learned how to do prior to using this pipeline.
 # Why is this not an optimal solution?
 
 
@@ -128,13 +131,13 @@ filt_R2 <- str_c(filtered_dir, sample.names, "_R2_filt.fastq")
 
 #### DADA2 ####
 #### STEP 1. SIMPLE FILTER BY LENGTH OF PRIMER
-# This is is a workaround if you can't filter by any other means. However, it is highly 
-# advisable to remove the primers with for instance cutadatp. 
+# This is is a workaround if you can't filter by any other means. However, it is highly
+# advisable to remove the primers with for instance cutadatp.
 
 # If your setup allows running multiple threads set multithread = TRUE
 # Mac OS: multithread = TRUE
-# Windows: multithread = FALSE, 
-# Can take a couple of minutes: 
+# Windows: multithread = FALSE,
+# Can take a couple of minutes:
 
 out <- filterAndTrim(fns_R1, filt_R1, fns_R2, filt_R2, truncLen = c(250, 200),
                      trimLeft = c(primer_length_fwd, primer_length_rev), maxN = 0,
@@ -159,7 +162,7 @@ names(derep_R1) <- sample.names
 names(derep_R2) <- sample.names
 
 
-#### STEP 4. DADA2 main inference 
+#### STEP 4. DADA2 main inference
 ####  Sequence-variant inference algorithm on the dereplicated data ####
 # If your computer can run multiple threads set multithread = TRUE
 
@@ -187,7 +190,7 @@ plot(table(nchar(getSequences(seqtab)))) #simple plot of length distribution
 #### STEP 7. Remove chimeras ####
 seqtab.nochim <- removeBimeraDenovo(seqtab, method = "consensus", multithread = FALSE,
                                     verbose = TRUE)
-# Get some stats: 
+# Get some stats:
 # Compute % of non chimeras
 paste0("% of non chimeras : ", sum(seqtab.nochim)/sum(seqtab) * 100)
 paste0("total number of sequences : ", sum(seqtab.nochim))
@@ -212,7 +215,7 @@ seqtab.nochim_trans <- as.data.frame(t(seqtab.nochim)) %>% rownames_to_column(va
   rowid_to_column(var = "OTUNumber") %>% mutate(OTUNumber = sprintf("OTU_%05d",
                                                                     OTUNumber)) %>% mutate(sequence = str_replace_all(sequence, "(-|\\.)", ""))
 
-#### Extract the sequences and export them in a fasta file: 
+#### Extract the sequences and export them in a fasta file:
 df <- seqtab.nochim_trans
 seq_out <- Biostrings::DNAStringSet(df$sequence)
 names(seq_out) <- df$OTUNumber
@@ -242,11 +245,11 @@ pr2_file <- paste0("databases/pr2_version_4.13.0_18S_dada2.fasta.gz")
 #                       minBoot = 0, outputBootstraps = TRUE, verbose = TRUE)
 # taxo_assign<-proc.time() - ptm
 
-### Runtime result for a mid 2015 MacBook Pro 
+### Runtime result for a mid 2015 MacBook Pro
 # user   system  elapsed
 # 6612.075  504.603 2576.869
 
-# In R it is possible sot save objects, or the full workspace. 
+# In R it is possible sot save objects, or the full workspace.
 # Single objects can be saved to a file with the saveRDS() function.
 # saveRDS(taxa, str_c(dada2_dir, "dada2.taxa.rds"))
 # I have prepared a taxonomy file that I can put on github, if necessary.
@@ -265,7 +268,7 @@ taxa_tax <- as.data.frame(taxa$tax)
 taxa_boot <- as.data.frame(taxa$boot) %>% rename_all(funs(str_c(., "_boot")))
 seqtab.nochim_trans <- taxa_tax %>% bind_cols(taxa_boot) %>% bind_cols(seqtab.nochim_trans)
 
-#Check at the Kingdom-level for 
+#Check at the Kingdom-level for
 unique(seqtab.nochim_trans$Kingdom)
 unique(seqtab.nochim_trans$Supergroup)
 
