@@ -4,6 +4,8 @@ dada2_main/fastq_filtered/
 dada2_main/fastq_filtered/qual_pdf/
 *.fastq
 
+Intro_to_Rstudio/*pptx
+
 Networks/*rds
 
 # History files
