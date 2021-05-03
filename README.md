@@ -35,7 +35,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 12:00        | _Lunch break_                                                                          |                                      |
 |               | 12:45        | Introduction to Linux and R/Rstudio                                                    | Ramiro Logares/Anders K. Krabberød   |
 |               | 14:00        | Introduction to Linux and R/Rstudio + Sequence cleaning                                | Ramiro Logares                       |
-|               | 15:00        | Introduction to VSEARCH (and SWARM)                                                    | Torbjørn Rognes                      |
+|               | 15:00        | [Introduction to VSEARCH (and SWARM)](Lectures_and_groups/Rognes_vsearch-swarm.pdf)    | Torbjørn Rognes                      |
 |               | 16:00        | [Help with setup and installation of required packages](Setup)                         | Anders K. Krabberød                  |
 |               |              |                                                                                        |                                      |
 | **Tuesday**   | 09:00        | [Introduction to DADA2](Dada2_Pipeline)                                                | Anders K. Krabberød                  |
