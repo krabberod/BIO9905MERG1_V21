@@ -4,3 +4,4 @@ Participants have been assigned to a breakout room to be used for group discussi
 Find your room [here.](Breakout_groups.pdf)
 
 - [Discussion Monday](Group_work_Monday.pdf)
+- [Introduction to linux - Ramiro Logares](intro.to.unix/intro.to.unix.pdf)
