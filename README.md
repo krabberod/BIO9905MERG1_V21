@@ -33,7 +33,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 10:00        | [Introduction to sequencing techniques](Lectures_and_groups/20210503_Lyle.pdf)         | Robert Lyle                          |
 |               | 11:00        | [Discussion groups: Get to know each other](Lectures_and_groups/Group_work_Monday.pdf) | Håvard Kauserud                      |
 |               | 12:00        | _Lunch break_                                                                          |                                      |
-|               | 12:45        | Introduction to Linux and R/Rstudio                                                    | Ramiro Logares/Anders K. Krabberød   |
+|               | 12:45        | [Introduction to Linux](intro.to.unix) and [R](intro.to.r)/[Rstudio](intro.to.Rstudio) | Ramiro Logares/Anders K. Krabberød   |
 |               | 14:00        | Introduction to Linux and R/Rstudio + Sequence cleaning                                | Ramiro Logares                       |
 |               | 15:00        | [Introduction to VSEARCH (and SWARM)](Lectures_and_groups/Rognes_vsearch-swarm.pdf)    | Torbjørn Rognes                      |
 |               | 16:00        | [Help with setup and installation of required packages](Setup)                         | Anders K. Krabberød                  |
