@@ -29,7 +29,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 
 | Day           | Time (start) | Topic                                                                                  | Responsible                          |
 | ------------- | ------------ | -------------------------------------------------------------------------------------- | ------------------------------------ |
-| **Monday**    | 09:00        | [Introduction to DNA metabarcoding](Lectures_and_groups/intro_lecture_Kauserud.pdf)    | Håvard Kauserud                      |
+| **Monday**    | 09:00        | [Introduction to DNA metabarcoding](Lectures_and_groups/Intro_lecture_Kauserud.pdf)    | Håvard Kauserud                      |
 |               | 10:00        | Introduction to sequencing techniques                                                  | Robert Lyle                          |
 |               | 11:00        | [Discussion groups: Get to know each other](Lectures_and_groups/Group_work_Monday.pdf) | Håvard Kauserud                      |
 |               | 12:00        | _Lunch break_                                                                          |                                      |
