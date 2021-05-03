@@ -1,7 +1,10 @@
 # Dada2 pipeline.
 
-This folder contains the necessary files and data to run the DADA2 pipeline in R. For this course we will mainly use Rstudio when running , which you already should have installed R. ALso make sure that you have installed the necessary packages.
+This folder contains the necessary files and data to run the DADA2 pipeline in R. For this course we will mainly use Rstudio when running , which you already should have installed R. Also make sure that you have installed the necessary packages.
 
+- The [introduction Lecture](./../Lectures_and_groups/DADA2_lecture.pdf)
+
+### Hands on run-through: 
 - Make a working directory for the DADA2 pipeline on your computer
 - Optional: Make an R-project in your working directory
 - Download the R script either from Rstudio (type in the console):
