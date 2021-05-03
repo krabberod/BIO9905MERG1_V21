@@ -3,11 +3,13 @@
 This folder contains the necessary files and data to run the DADA2 pipeline in R. For this course we will mainly use Rstudio when running , which you already should have installed R. ALso make sure that you have installed the necessary packages.
 
 - Make a working directory for the DADA2 pipeline on your computer
-- Download the Rscript called [DADA2_pipeline.R](https://raw.githubusercontent.com/krabberod/BIO9905MERG1_V21/main/Dada2_Pipeline/DADA2_pipeline.R)
+- Optional: Make an R-project in your working directory
+- Download the R script either from Rstudio (type in the console):
+```download.file("https://raw.githubusercontent.com/krabberod/BIO9905MERG1_V21/main/Dada2_Pipeline/DADA2_pipeline.R", "DADA2_pipeline.R")```
+- Or the boring way [DADA2_pipeline.R](https://raw.githubusercontent.com/krabberod/BIO9905MERG1_V21/main/Dada2_Pipeline/DADA2_pipeline.R)
+- Open the script in Rstudio
 - Make as subdirectory called *fastq* in the working directroy
 - Download the fastq files to the subdirectory (link is in the script)
-- Optional: Make an R-project in your working directory
-- Open the script in Rstudio
 
 **The fastq files have already been processed:**
 - The samples have been demultiplexed, i.e. split into individual per-sample fastq files.
