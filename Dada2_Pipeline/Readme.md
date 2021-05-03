@@ -4,7 +4,6 @@ This folder contains the necessary files and data to run the DADA2 pipeline in R
 
 - Make a working directory for the DADA2 pipeline on your computer
 - Download the Rscript called [DADA2_pipeline.R](https://raw.githubusercontent.com/krabberod/BIO9905MERG1_V21/main/Dada2_Pipeline/DADA2_pipeline.R)
-  -
 - Make as subdirectory called *fastq* in the working directroy
 - Download the fastq files to the subdirectory (link is in the script)
 - Optional: Make an R-project in your working directory
