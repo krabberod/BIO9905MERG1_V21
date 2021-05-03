@@ -6,8 +6,8 @@ Find your room [here.](Breakout_groups.pdf)
 
 ### Monday
 - [Discussion Monday](Group_work_Monday.pdf)
-- [Introduction to sequencing techniques - Robert Lyle](20210503_Lyle.pdf)
-- [Introduction to linux - Ramiro Logares](./../intro.to.unix/intro.to.unix.pdf)
-- [Introduction to R - Ramiro Logares](./../intro.to.r/intro.to.R.pdf)
-- [Introduction to Rstudio - Anders K. Krabberød](./../intro.to.Rstudio/RStudio_intro.pdf)
--
+- [Introduction to sequencing techniques](20210503_Lyle.pdf) - Robert Lyle]
+- [Introduction to linux](./../intro.to.unix/intro.to.unix.pdf) - Ramiro Logares
+- [Introduction to R](./../intro.to.r/intro.to.R.pdf) - Ramiro Logares
+- [Introduction to Rstudio](./../intro.to.Rstudio/RStudio_intro.pdf) - Anders K. Krabberød
+- [Introduction to VSEARCH (and SWARM)](./../Lectures_and_groups/Rognes_vsearch-swarm.pdf) - Torbjørn Rognes
