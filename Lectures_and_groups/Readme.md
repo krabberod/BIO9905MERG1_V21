@@ -11,3 +11,6 @@ Find your room [here.](Breakout_groups.pdf)
 - [Introduction to R](./../intro.to.r/intro.to.R.pdf) - Ramiro Logares
 - [Introduction to Rstudio](./../intro.to.Rstudio/RStudio_intro.pdf) - Anders K. Krabberød
 - [Introduction to VSEARCH (and SWARM)](./../Lectures_and_groups/Rognes_vsearch-swarm.pdf) - Torbjørn Rognes
+
+### Tuesday
+- [The DADA2 pipeline]()
