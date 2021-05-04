@@ -47,10 +47,10 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 15:00        | Diet analyses                                                                          | Galina Gusarova                      |
 |               |              |                                                                                        |                                      |
 | **Wednesday** | 09:00        | Taxonomic assignment                                                                   | Marie Davey                          |
-|               | 10:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                   | Ramiro Logares                       |
+|               | 10:00        | Discussion groups                                                                      | Håvard Kauserud and others           | 
 |               | 11:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                   | Ramiro Logares                       |
 |               | 12:00        | _Lunch break_                                                                          |                                      |
-|               | 12:45        | Discussion groups                                                                      | Håvard Kauserud and others           |
+|               | 12:45        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                   |                                      |
 |               | 14:00        | Flexible                                                                               |                                      |
 |               | 15:00        | In-silico PCR and how to get quantitative information                                  | Douglas Yu                           |
 |               |              |                                                                                        |                                      |
