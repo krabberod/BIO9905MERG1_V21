@@ -19,5 +19,5 @@ Find your room [here.](Breakout_groups.pdf)
 ### Wednesday
 - [Taxonomic assignment](Lectures_and_groups/Davey_taxo_assign_04052021.pdf) - Marie Davey
 - [Estimating abundance from DNA-based data](./../Lectures_and_groups/DouglasYu_20210505.pdf) - Douglas Yu
-- [Bulk-sample Metabarcoding without PCR](Lectures_and_groups/DouglasYu_partII_20210505.pdf) - Douglas Yu (part II)
+- [Bulk-sample Metabarcoding without PCR](./../Lectures_and_groups/DouglasYu_partII_20210505.pdf) - Douglas Yu (part II)
   - [The excel sheet](./../Lectures_and_groups/pa_vs_qp_tables_20210402.xlsx)
