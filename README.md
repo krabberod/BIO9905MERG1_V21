@@ -49,7 +49,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 | **Wednesday** | 09:00        | [Taxonomic assignment](Lectures_and_groups/Davey_taxo_assign_04052021.pdf)                          | Marie Davey                          |
 |               | 10:00        | Flexible (dada2...)                                                                                 | Anders K. Krabberød                  |
 |               | 11:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                                | Ramiro Logares                       |
-|               | 12:00        | _Lunch break_                    Lectures_and_groups/Davey_taxo_assign_04052021.pdf                 |                                      |
+|               | 12:00        | _Lunch break_                                                                                       |                                      |
 |               | 12:45        | [In-silico PCR and how to get quantitative information](Lectures_and_groups/DouglasYu_20210505.pdf) | Douglas Yu                           |
 |               | 14:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                                | Ramiro Logares                       |
 |               | 15:00        | Group discussions                                                                                   |                                      |
