@@ -26,6 +26,6 @@ This can be downloaded and the opened i Rstudio:
 
 ```
 load("dada2.RData")
-``` 
+```
 
 The script is based on the DADA2 tutorial https://benjjneb.github.io/dada2/tutorial.html
