@@ -47,11 +47,11 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 15:00        | Diet analyses                                                                          | Galina Gusarova                      |
 |               |              |                                                                                        |                                      |
 | **Wednesday** | 09:00        | Taxonomic assignment                                                                   | Marie Davey                          |
-|               | 10:00        | Discussion groups                                                                      | Håvard Kauserud and others           | 
+|               | 10:00        | Flexible (dada2...)                                                                    | Håvard Kauserud and others           |
 |               | 11:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                   | Ramiro Logares                       |
 |               | 12:00        | _Lunch break_                                                                          |                                      |
 |               | 12:45        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                   |                                      |
-|               | 14:00        | Flexible                                                                               |                                      |
+|               | 14:00        | Discussion groups                                                                      |                                      |
 |               | 15:00        | In-silico PCR and how to get quantitative information                                  | Douglas Yu                           |
 |               |              |                                                                                        |                                      |
 | **Thursday**  | 09:00        | Phylogenetic placement of HTS data                                                     | Micah Dunthorn                       |
