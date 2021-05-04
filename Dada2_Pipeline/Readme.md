@@ -22,7 +22,10 @@ This folder contains the necessary files and data to run the DADA2 pipeline in R
 
 - If you didn't manage to finish the pipeline during hands-on an RData image of the full pipeline has been added to the repository containing all the necessary results from the pipeline: [dada2.RData](dada2.RData)
 
-This can be downloaded and the opened i Rstudio.
+This can be downloaded and the opened i Rstudio:  
+
+```
 load("dada2.RData")
+``` 
 
 The script is based on the DADA2 tutorial https://benjjneb.github.io/dada2/tutorial.html
