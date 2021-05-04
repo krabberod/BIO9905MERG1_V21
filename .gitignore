@@ -16,8 +16,9 @@ Networks/*rds
 
 # Session Data files
 .RData
-*.RData
-dada2.RData
+sparcc.RData
+wTO.Rdata
+Some_data.Rdata
 
 # User-specific files
 .Ruserdata
