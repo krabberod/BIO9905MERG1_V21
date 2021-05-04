@@ -46,13 +46,13 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 14:00        | [Continuation DADA2](Dada2_Pipeline)                                                                | Ramiro Logares / Anders K. Krabberød |
 |               | 15:00        | Diet analyses                                                                                       | Galina Gusarova                      |
 |               |              |                                                                                                     |                                      |
-| **Wednesday** | 09:00        | [Taxonomic assignment](Lectures_and_groups/Davey_taxo_assign_04052021.pdf)                                                                                | Marie Davey                          |
-|               | 10:00        | Flexible (dada2...)                                                                                 | Håvard Kauserud and others           |
+| **Wednesday** | 09:00        | [Taxonomic assignment](Lectures_and_groups/Davey_taxo_assign_04052021.pdf)                          | Marie Davey                          |
+|               | 10:00        | Flexible (dada2...)                                                                                 | Anders K. Krabberød                  |
 |               | 11:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                                | Ramiro Logares                       |
-|               | 12:00        | _Lunch break_                    Lectures_and_groups/Davey_taxo_assign_04052021.pdf                                                                   |                                      |
-|               | 12:45        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                                |                                      |
-|               | 14:00        | Discussion groups                                                                                   |                                      |
-|               | 15:00        | [In-silico PCR and how to get quantitative information](Lectures_and_groups/DouglasYu_20210505.pdf) | Douglas Yu                           |
+|               | 12:00        | _Lunch break_                    Lectures_and_groups/Davey_taxo_assign_04052021.pdf                 |                                      |
+|               | 12:45        | [In-silico PCR and how to get quantitative information](Lectures_and_groups/DouglasYu_20210505.pdf) | Douglas Yu                           |
+|               | 14:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                                | Ramiro Logares                       |
+|               | 15:00        | Group discussions                                                                                   |                                      |
 |               |              |                                                                                                     |                                      |
 | **Thursday**  | 09:00        | Phylogenetic placement of HTS data                                                                  | Micah Dunthorn                       |
 |               | 10:00        | Phylogenetic placement of HTS data                                                                  | Micah Dunthorn                       |
