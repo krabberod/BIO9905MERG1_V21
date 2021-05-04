@@ -17,5 +17,6 @@ Find your room [here.](Breakout_groups.pdf)
 - [Contamination issues during DNA metabarcoding](./../Lectures_and_groups/bohmann_3May_2021.pdf) - Kristine Bohmann
 
 ### Wednesday
+- [Taxonomic assignment](Lectures_and_groups/Davey_taxo_assign_04052021.pdf) - Marie Davey
 - [In-silico PCR and how to get quantitative information](./../Lectures_and_groups/DouglasYu_20210505.pdf) - Douglas Yu
   - [The excel sheet](./../Lectures_and_groups/pa_vs_qp_tables_20210402.xlsx)
