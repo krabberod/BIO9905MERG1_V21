@@ -240,8 +240,10 @@ pr2_file <- paste0("databases/pr2_version_4.13.0_18S_dada2.fasta.gz")
 # So in case we are running late skip this next command. If we have time
 # start the process (i.e. remove hashtags), and have some coffee/lunch.
 
-# taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
-#                       minBoot = 0, outputBootstraps = TRUE, verbose = TRUE)
+save.image("name.file.RData")
+load("name.file.RData")
+ taxa <- assignTaxonomy(seqtab.nochim, refFasta = pr2_file, taxLevels = PR2_tax_levels,
+                       minBoot = 0, outputBootstraps = TRUE, verbose = TRUE, multithread = TRUE)
 
 ### Runtime result for a mid 2015 MacBook Pro
 # user   system  elapsed
@@ -279,11 +281,17 @@ unique(seqtab.nochim_trans$Supergroup)
 bootstrap_min <- 80
 
 # Remove OTU with annotation below the bootstrap value
-seqtab.nochim_18S <- seqtab.nochim_trans %>% dplyr::filter(Supergroup_boot >=
-                                                             bootstrap_min)
-seqtab.nochim_18S_lowsupport<- seqtab.nochim_trans %>% dplyr::filter(Supergroup_boot <=
-                                                                       bootstrap_min)
+seqtab.nochim_18S <- seqtab.nochim_trans %>% dplyr::filter(Supergroup_boot >= bootstrap_min)
+seqtab.nochim_18S <- seqtab.nochim_trans[which(seqtab.nochim_trans$Supergroup_boot>80),]
+
+unique(seqtab.nochim_18S$Division)
+
+seqtab.nochim_18S_noMetazoa <- seqtab.nochim_18S[which(seqtab.nochim_18S$Division!="Metazoa"),]
+seqtab.nochim_18S_lowsupport<- seqtab.nochim_trans %>% dplyr::filter(Supergroup_boot <= bootstrap_min)
+
+
 write_tsv(seqtab.nochim_18S, str_c(dada2_dir, "OTU_table.tsv"))
+write_tsv(seqtab.nochim_18S_noMetazoa, str_c(dada2_dir, "OTU_table_noMetazoa.tsv"))
 write_tsv(seqtab.nochim_18S_lowsupport, str_c(dada2_dir, "OTU_table_lowsupport.tsv"))
 
 ####  Write FASTA file for BLAST analysis with taxonomy ####
