@@ -29,3 +29,6 @@ Find your room [here.](Breakout_groups.pdf)
 - [OTUs, ASVs and phylospecies](./../Lectures_and_groups/dunthorn_clustering_talk.pdf) - Micha Dunthorn
 - [Long-read metabarcoding](Long-read_metabarcoding.pdf) - Mahwash Jamy
 - [Metacoder](./../Metacoder/Thoen_Metacoder.pdf) - Ella Thoen
+
+### Friday
+- [Networks](./../Lectures_and_groups/Networks_Krabberød.pdf) 
