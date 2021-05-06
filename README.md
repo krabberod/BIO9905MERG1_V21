@@ -52,7 +52,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 12:00        | _Lunch break_                                                                              |                                      |
 |               | 12:45        | [In-silico PCR and how to get quantitative information](Lectures_and_groups)               | Douglas Yu                           |
 |               | 14:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                       | Ramiro Logares                       |
-|               | 15:00        | [Group discussions](Lectures_and_groups/Group_work_Wednesday.pdf)                                                                          |                                      |
+|               | 15:00        | [Group discussions](Lectures_and_groups/Group_work_Wednesday.pdf)                          |                                      |
 |               |              |                                                                                            |                                      |
 | **Thursday**  | 09:00        | Phylogenetic placement of HTS data                                                         | Micah Dunthorn                       |
 |               | 10:00        | Phylogenetic placement of HTS data                                                         | Micah Dunthorn                       |
