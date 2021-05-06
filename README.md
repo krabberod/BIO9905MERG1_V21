@@ -62,8 +62,8 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 14:00        | Introduction to metacoder                                                                  | Ella Thoen                           |
 |               | 15:00        | Case study                                                                                 | Sundy Maurice                        |
 |               |              |                                                                                            |                                      |
-| **Friday**    | 09:00        | [Network analyses of DNA-metarcoding data](Networks)                                       | Anders K. Krabberød                  |
-|               | 10:00        | [Network analyses of DNA-metarcoding data](Networks)                                       | Anders K. Krabberød                  |
+| **Friday**    | 09:00        | [Network analyses of DNA-metabarcoding data](Networks)                                       | Anders K. Krabberød                  |
+|               | 10:00        | [Network analyses of DNA-metabarcoding data](Networks)                                       | Anders K. Krabberød                  |
 |               | 11:00        | Flexible time                                                                              |                                      |
 |               | 12:00        | _Lunch break_                                                                              |                                      |
 |               | 12:45        | Methods to retrieve intra-species diversity information                                    | Owen S. Wangensteen Fuentes          |
