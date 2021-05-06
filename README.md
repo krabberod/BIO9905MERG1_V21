@@ -44,7 +44,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 12:00        | _Lunch break_                                                                              |                                      |
 |               | 12:45        | [Contamination issues during DNA metabarcoding](Lectures_and_groups/bohmann_3May_2021.pdf) | Kristine Bohmann                     |
 |               | 14:00        | [Continuation DADA2](Dada2_Pipeline)                                                       | Ramiro Logares / Anders K. Krabberød |
-|               | 15:00        | Diet analyses                                                                              | Galina Gusarova                      |
+|               | 15:00        | [Diet analyses](Lectures_and_groups/Presentation_diet20210405.pdf)                         | Galina Gusarova                      |
 |               |              |                                                                                            |                                      |
 | **Wednesday** | 09:00        | [Taxonomic assignment](Lectures_and_groups/Davey_taxo_assign_04052021.pdf)                 | Marie Davey                          |
 |               | 10:00        | Flexible (dada2...)                                                                        | Anders K. Krabberød                  |
@@ -58,12 +58,12 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 10:00        | Phylogenetic placement of HTS data                                                         | Micah Dunthorn                       |
 |               | 11:00        | OTUs, ASVs and phylospecies                                                                | Micah Dunthorn                       |
 |               | 12:00        | _Lunch break_                                                                              |                                      |
-|               | 12:45        | Long-read metabarcoding                                                                    | Mahwash Jamy                         |
-|               | 14:00        | Introduction to metacoder                                                                  | Ella Thoen                           |
+|               | 12:45        | [Long-read metabarcoding](Lectures_and_groups/Long-read metabarcoding.pdf)                 | Mahwash Jamy                         |
+|               | 14:00        | [Introduction to metacoder](Metacoder)                                                     | Ella Thoen                           |
 |               | 15:00        | Case study                                                                                 | Sundy Maurice                        |
 |               |              |                                                                                            |                                      |
-| **Friday**    | 09:00        | [Network analyses of DNA-metabarcoding data](Networks)                                       | Anders K. Krabberød                  |
-|               | 10:00        | [Network analyses of DNA-metabarcoding data](Networks)                                       | Anders K. Krabberød                  |
+| **Friday**    | 09:00        | [Network analyses of DNA-metabarcoding data](Networks)                                     | Anders K. Krabberød                  |
+|               | 10:00        | [Network analyses of DNA-metabarcoding data](Networks)                                     | Anders K. Krabberød                  |
 |               | 11:00        | Flexible time                                                                              |                                      |
 |               | 12:00        | _Lunch break_                                                                              |                                      |
 |               | 12:45        | Methods to retrieve intra-species diversity information                                    | Owen S. Wangensteen Fuentes          |

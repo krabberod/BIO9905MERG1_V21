@@ -21,4 +21,10 @@ Find your room [here.](Breakout_groups.pdf)
 - [Estimating abundance from DNA-based data](./../Lectures_and_groups/DouglasYu_20210505.pdf) - Douglas Yu
 - [Bulk-sample Metabarcoding without PCR](./../Lectures_and_groups/DouglasYu_partII_20210505.pdf) - Douglas Yu (part II)
   - [The excel sheet](./../Lectures_and_groups/pa_vs_qp_tables_20210402.xlsx)
-- [Discussion Wednesday](./../Lectures_and_groups/Group_work_Wednesday.pdf)
+- [Discussion Wednesday](Lectures_and_groups/Group_work_Wednesday.pdf)
+- [Diet Analysis](Presentation_diet20210405.pdf) - Galina Gusarova
+
+### Thursday
+- Mica's Morning
+- [Long-read metabarcoding](Long-read metabarcoding.pdf) - Mahwash Jamy
+- [Metacoder](./../Metacoder/Thoen_Metacoder.pdf) - Ella Thoen
