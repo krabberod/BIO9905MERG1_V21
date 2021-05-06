@@ -25,6 +25,7 @@ Find your room [here.](Breakout_groups.pdf)
 - [Diet Analysis](Presentation_diet20210405.pdf) - Galina Gusarova
 
 ### Thursday
-- Mica's Morning
+- [Phylogenetic placement](./../Phylogenetic_placement) - Micha Dunthorn, Lucas Czech
+- [OTUs, ASVs and phylospecies](./../Lectures_and_groups/dunthorn_clustering_talk.pdf) - Micha Dunthorn
 - [Long-read metabarcoding](Long-read_metabarcoding.pdf) - Mahwash Jamy
 - [Metacoder](./../Metacoder/Thoen_Metacoder.pdf) - Ella Thoen
