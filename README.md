@@ -58,7 +58,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 10:00        | Phylogenetic placement of HTS data                                                         | Micah Dunthorn                       |
 |               | 11:00        | OTUs, ASVs and phylospecies                                                                | Micah Dunthorn                       |
 |               | 12:00        | _Lunch break_                                                                              |                                      |
-|               | 12:45        | [Long-read metabarcoding](Lectures_and_groups/Long-read metabarcoding.pdf)                 | Mahwash Jamy                         |
+|               | 12:45        | [Long-read metabarcoding](Lectures_and_groups/Long-read_metabarcoding.pdf)                 | Mahwash Jamy                         |
 |               | 14:00        | [Introduction to metacoder](Metacoder)                                                     | Ella Thoen                           |
 |               | 15:00        | Case study                                                                                 | Sundy Maurice                        |
 |               |              |                                                                                            |                                      |
