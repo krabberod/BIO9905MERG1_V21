@@ -54,9 +54,9 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 14:00        | [Multivariate analyses of DNA-metabarcoding data](community.ecology)                       | Ramiro Logares                       |
 |               | 15:00        | [Group discussions](Lectures_and_groups/Group_work_Wednesday.pdf)                          |                                      |
 |               |              |                                                                                            |                                      |
-| **Thursday**  | 09:00        | Phylogenetic placement of HTS data                                                         | Micah Dunthorn                       |
-|               | 10:00        | Phylogenetic placement of HTS data                                                         | Micah Dunthorn                       |
-|               | 11:00        | [OTUs, ASVs and phylospecies](Lectures_and_groups/dunthorn_clustering_talk.pdf)                                                               | Micah Dunthorn                       |
+| **Thursday**  | 09:00        | [Phylogenetic placement of HTS data](Phylogenetic_placement)                               | Micah Dunthorn                       |
+|               | 10:00        | [Phylogenetic placement of HTS data](Phylogenetic_placement)                               | Micah Dunthorn                       |
+|               | 11:00        | [OTUs, ASVs and phylospecies](Lectures_and_groups/dunthorn_clustering_talk.pdf)            | Micah Dunthorn                       |
 |               | 12:00        | _Lunch break_                                                                              |                                      |
 |               | 12:45        | [Long-read metabarcoding](Lectures_and_groups/Long-read_metabarcoding.pdf)                 | Mahwash Jamy                         |
 |               | 14:00        | [Introduction to metacoder](Metacoder)                                                     | Ella Thoen                           |
