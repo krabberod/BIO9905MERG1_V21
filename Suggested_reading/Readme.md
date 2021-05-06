@@ -12,7 +12,7 @@ Here we have gathered some literature on metabarcoding.
 - [Jamy et al. 2019](Jamy_et_al_2019.pdf). Long-read metabarcoding of the eukaryotic rDNA operon to phylogenetically and taxonomically resolve environmental diversity. Molecular Ecology Resources, 20, 429-443.
 
 ### Methods
- - [Foster et al. 2017](Foster_et_al_2017.pdf). Metacoder: An R package for visualization and manipulation of community taxonomic diversity data. PLoS Computational biology, 13.
+- [Foster et al. 2017](Foster_et_al_2017.pdf). Metacoder: An R package for visualization and manipulation of community taxonomic diversity data. PLoS Computational biology, 13.
 - [Rognes et al. 2016](Rognes_et_al_2016.pdf). VSEARCH: a versatile open source tool for metagenomics. PeerJ
 - [Mahe et al. 2015](Mahe et al 2015.pdf). Swarm v2: highly-scalable and high-resolution amplicon clustering. PeerJ
 - [Callahan et al. 2016](Callahan_et_al_2016.pdf). DADA2: High-resolution sample inference from Illumina amplicon data. Nature Methods, 13, 581-588.

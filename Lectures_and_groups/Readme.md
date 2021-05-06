@@ -26,5 +26,5 @@ Find your room [here.](Breakout_groups.pdf)
 
 ### Thursday
 - Mica's Morning
-- [Long-read metabarcoding](Long-read metabarcoding.pdf) - Mahwash Jamy
+- [Long-read metabarcoding](Long-read_metabarcoding.pdf) - Mahwash Jamy
 - [Metacoder](./../Metacoder/Thoen_Metacoder.pdf) - Ella Thoen
