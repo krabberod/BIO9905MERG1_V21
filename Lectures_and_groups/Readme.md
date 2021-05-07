@@ -32,4 +32,4 @@ Find your room [here.](Breakout_groups.pdf)
 
 ### Friday
 - [Networks](./../Lectures_and_groups/Networks_Krabberød.pdf)
-- [Methods to retrieve intra-species diversity information] (./../Lectures_and_groups/Wangensteen_Intraspecies.pdf) - Owen S. Wangensteen Fuentes  
+- [Methods to retrieve intra-species diversity information](./../Lectures_and_groups/Wangensteen_Intraspecies.pdf) - Owen S. Wangensteen Fuentes  
