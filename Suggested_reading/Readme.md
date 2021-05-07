@@ -17,7 +17,7 @@ Here we have gathered some literature on metabarcoding.
 - [Mahe et al. 2015](Mahe et al 2015.pdf). Swarm v2: highly-scalable and high-resolution amplicon clustering. PeerJ
 - [Callahan et al. 2016](Callahan_et_al_2016.pdf). DADA2: High-resolution sample inference from Illumina amplicon data. Nature Methods, 13, 581-588.
 - [Barbera et al. 2019](Barbera_et_al_2019.pdf). EPA-ng: Massively Parallel Evolutionary Placement of Genetic Sequences. Systematic Biology, 68, 365-369.
-- [Deiner et al. 2016](Suggested_reading/Deiner_et al_2016.pdf) - Environmental DNA reveals that rivers are conveyer belts of biodiversity information. Nat. Com
+- [Deiner et al. 2016](Deiner_et al_2016.pdf) - Environmental DNA reveals that rivers are conveyer belts of biodiversity information. Nat. Com
 
 
 ### Networks
