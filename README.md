@@ -67,7 +67,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 11:00        | Flexible time                                                                                               |                                      |
 |               | 12:00        | _Lunch break_                                                                                               |                                      |
 |               | 12:45        | [Methods to retrieve intra-species diversity information](Lectures_and_groups/Wangensteen_Intraspecies.pdf) | Owen S. Wangensteen Fuentes          |
-|               | 14:00        | Discussion groups                                                                                           | Håvard Kauserud                      |
+|               | 14:00        | [Discussion groups](Lectures_and_groups/Group_work_Friday.pdf)                                              | Håvard Kauserud                      |
 |               | 15:00        | DNA-metabarcoding - where are we going?                                                                     | Pierre Taberlet                      |
 
 
