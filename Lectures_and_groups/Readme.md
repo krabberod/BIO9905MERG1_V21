@@ -28,7 +28,7 @@ Find your room [here.](Breakout_groups.pdf)
 - [Phylogenetic placement](./../Phylogenetic_placement) - Micha Dunthorn, Lucas Czech
 - [OTUs, ASVs and phylospecies](./../Lectures_and_groups/dunthorn_clustering_talk.pdf) - Micha Dunthorn
 - [Long-read metabarcoding](Long-read_metabarcoding.pdf) - Mahwash Jamy
-- [Case study](Lectures_and_groups/Maurice_2021.pdf) - Sundy Maurice
+- [Case study](./../Lectures_and_groups/Maurice_2021.pdf) - Sundy Maurice
 - [Metacoder](./../Metacoder/Thoen_Metacoder.pdf) - Ella Thoen
 
 ### Friday
