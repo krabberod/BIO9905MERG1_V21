@@ -60,7 +60,7 @@ Participants have been assigned [to a beakoutroom](Lectures_and_groups/Breakout_
 |               | 12:00        | _Lunch break_                                                                                               |                                      |
 |               | 12:45        | [Long-read metabarcoding](Lectures_and_groups/Long-read_metabarcoding.pdf)                                  | Mahwash Jamy                         |
 |               | 14:00        | [Introduction to metacoder](Metacoder)                                                                      | Ella Thoen                           |
-|               | 15:00        | Case study                                                                                                  | Sundy Maurice                        |
+|               | 15:00        | [Case study ](Lectures_and_groups/Maurice_2021.pdf)                                                         | Sundy Maurice                        |
 |               |              |                                                                                                             |                                      |
 | **Friday**    | 09:00        | [Network analyses of DNA-metabarcoding data](Networks)                                                      | Anders K. Krabberød                  |
 |               | 10:00        | [Network analyses of DNA-metabarcoding data](Networks)                                                      | Anders K. Krabberød                  |
